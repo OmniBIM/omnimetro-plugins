@@ -1,0 +1,60 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="桥梁接触网布置向导" Width="680" Height="680" MinHeight="500" MaxHeight="720"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
+  <Grid Margin="14">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <StackPanel Grid.Row="0">
+      <TextBlock Text="桥梁接触网布置" FontSize="22" FontWeight="Bold" />
+      <TextBlock Text="按步骤完成桥面选择、中心线拟合、族加载和参数确认。" Margin="0,4,0,12" Foreground="#666666" />
+    </StackPanel>
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+      <StackPanel>
+        <GroupBox Header="1. 桥面族与中心线" Padding="8" Margin="0,0,0,8">
+          <StackPanel>
+            <TextBlock x:Name="BridgeStatus" Text="未选择。可多次框选同一段桥面族。" TextWrapping="Wrap" Margin="0,0,0,6" />
+            <Button x:Name="SelectBridgeButton" Content="框选桥面族 / 继续框选" Click="SelectBridges" Padding="10,5" />
+            <TextBlock x:Name="FitStatus" Text="等待桥面族选择。" TextWrapping="Wrap" Margin="0,6,0,0" />
+          </StackPanel>
+        </GroupBox>
+        <GroupBox Header="2. 选择族文件" Padding="8" Margin="0,0,0,8">
+          <StackPanel>
+            <Grid Margin="0,0,0,4"><Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="轨道自适应族" VerticalAlignment="Center"/><TextBlock x:Name="RailStatus" Grid.Column="1" Text="未选择" TextWrapping="Wrap" Margin="6,0"/><Button x:Name="RailButton" Grid.Column="2" Content="选择文件" Click="LoadRail" IsEnabled="False" Padding="8,3"/></Grid>
+            <Grid Margin="0,0,0,4"><Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="桥边挡板 A" VerticalAlignment="Center"/><TextBlock x:Name="BarrierAStatus" Grid.Column="1" Text="未选择" TextWrapping="Wrap" Margin="6,0"/><Button x:Name="BarrierAButton" Grid.Column="2" Content="选择文件" Click="LoadBarrierA" IsEnabled="False" Padding="8,3"/></Grid>
+            <Grid Margin="0,0,0,4"><Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="桥边挡板 B" VerticalAlignment="Center"/><TextBlock x:Name="BarrierBStatus" Grid.Column="1" Text="未选择" TextWrapping="Wrap" Margin="6,0"/><Button x:Name="BarrierBButton" Grid.Column="2" Content="选择文件" Click="LoadBarrierB" IsEnabled="False" Padding="8,3"/></Grid>
+            <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="接触网支柱族（立于桥面）" VerticalAlignment="Center"/><TextBlock x:Name="SupportStatus" Grid.Column="1" Text="未选择" TextWrapping="Wrap" Margin="6,0"/><Button x:Name="SupportButton" Grid.Column="2" Content="选择文件" Click="LoadSupport" IsEnabled="False" Padding="8,3"/></Grid>
+          </StackPanel>
+        </GroupBox>
+        <GroupBox x:Name="ParameterGroup" Header="3. 偏移与间距预览（除旋转角外，单位：mm）" Padding="8" Margin="0,0,0,8" IsEnabled="False">
+          <StackPanel>
+          <Canvas x:Name="ProfileCanvas" Height="190" Background="#FAFAFA" Margin="0,0,0,8" />
+          <Grid>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="220"/><ColumnDefinition Width="120"/><ColumnDefinition Width="220"/><ColumnDefinition Width="120"/></Grid.ColumnDefinitions>
+            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+            <TextBlock Text="构件" FontWeight="Bold"/><TextBlock Grid.Column="1" Text="水平" FontWeight="Bold"/><TextBlock Grid.Column="2" Text="垂直" FontWeight="Bold"/>
+            <TextBlock Grid.Row="1" Text="轨道 A / B（距中心线）" VerticalAlignment="Center" Margin="0,5"/><TextBox x:Name="RailH" Grid.Row="1" Grid.Column="1" Text="2500" TextChanged="UpdateProfile" Margin="4"/><TextBox x:Name="RailV" Grid.Row="1" Grid.Column="2" Text="0" TextChanged="UpdateProfile" Margin="4"/>
+            <TextBlock Grid.Row="2" Text="桥边挡板 A" VerticalAlignment="Center" Margin="0,5"/><TextBox x:Name="BarrierAH" Grid.Row="2" Grid.Column="1" Text="0" TextChanged="UpdateProfile" Margin="4"/><TextBox x:Name="BarrierAV" Grid.Row="2" Grid.Column="2" Text="0" TextChanged="UpdateProfile" Margin="4"/>
+            <TextBlock Grid.Row="3" Text="桥边挡板 B" VerticalAlignment="Center" Margin="0,5"/><TextBox x:Name="BarrierBH" Grid.Row="3" Grid.Column="1" Text="0" TextChanged="UpdateProfile" Margin="4"/><TextBox x:Name="BarrierBV" Grid.Row="3" Grid.Column="2" Text="0" TextChanged="UpdateProfile" Margin="4"/>
+            <TextBlock Grid.Row="4" Text="接触网支柱 A / B（距中心线）" VerticalAlignment="Center" Margin="0,5"/><TextBox x:Name="SupportH" Grid.Row="4" Grid.Column="1" Text="0" TextChanged="UpdateProfile" Margin="4"/><TextBox x:Name="SupportV" Grid.Row="4" Grid.Column="2" Text="0" TextChanged="UpdateProfile" Margin="4"/>
+            <TextBlock Grid.Row="5" Text="支柱绕 X 轴旋转角（度）" VerticalAlignment="Center" Margin="0,5"/><TextBox x:Name="SupportRotationX" Grid.Row="5" Grid.Column="1" Text="0" TextChanged="UpdateProfile" Margin="4"/>
+            <TextBlock Grid.Row="6" Text="支柱绕 Y 轴旋转角（度）" VerticalAlignment="Center" Margin="0,5"/><TextBox x:Name="SupportRotationY" Grid.Row="6" Grid.Column="1" Text="0" TextChanged="UpdateProfile" Margin="4"/>
+            <TextBlock Grid.Row="7" Text="支柱绕 Z 轴附加旋转角（左右反向，度）" VerticalAlignment="Center" Margin="0,5"/><TextBox x:Name="SupportRotationZ" Grid.Row="7" Grid.Column="1" Text="0" TextChanged="UpdateProfile" Margin="4"/>
+            <TextBlock Grid.Row="8" Text="自适应构件端部搭接量" VerticalAlignment="Center" Margin="0,5"/><TextBox x:Name="AdaptiveOverlap" Grid.Row="8" Grid.Column="1" Text="300" TextChanged="UpdateProfile" Margin="4"/>
+            <TextBlock Grid.Row="9" Text="支柱间距" VerticalAlignment="Center" Margin="0,5"/><TextBox x:Name="SupportSpacing" Grid.Row="9" Grid.Column="1" Text="40000" TextChanged="UpdateProfile" Margin="4"/><TextBlock x:Name="PreviewStatus" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" Text="等待中心线拟合" VerticalAlignment="Center" Margin="8,0" TextWrapping="Wrap"/>
+          </Grid>
+          </StackPanel>
+        </GroupBox>
+        <TextBlock x:Name="ResultStatus" Text="完成后将在此显示结果。" TextWrapping="Wrap" Margin="2,2,2,10" />
+      </StackPanel>
+    </ScrollViewer>
+    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+      <Button x:Name="PreviewButton" Content="布置预览（前两段）" Click="PreviewPlacement" IsEnabled="False" Padding="18,7" Margin="0,0,8,0" />
+      <Button x:Name="StartButton" Content="开始全部布置" Click="StartPlacement" IsEnabled="False" Padding="18,7" Margin="0,0,8,0" />
+      <Button Content="关闭" Click="CloseWizard" Padding="18,7" IsCancel="True" />
+    </StackPanel>
+  </Grid>
+</Window>

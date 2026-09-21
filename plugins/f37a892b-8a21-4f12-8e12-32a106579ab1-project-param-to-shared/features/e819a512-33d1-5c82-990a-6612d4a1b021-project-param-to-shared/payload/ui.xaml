@@ -1,0 +1,169 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="项目参数转共享与数值管理器 - OmniMetro"
+        Height="680" Width="1120" MinHeight="550" MinWidth="900"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource WindowBg}">
+
+    <Window.Resources>
+        <!-- 默认浅色主题调色盘 -->
+        <SolidColorBrush x:Key="WindowBg" Color="#F4F6F9"/>
+        <SolidColorBrush x:Key="HeaderBg" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="CardBg" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="TextPrimary" Color="#1E293B"/>
+        <SolidColorBrush x:Key="TextSecondary" Color="#64748B"/>
+        <SolidColorBrush x:Key="BorderBrushColor" Color="#E2E8F0"/>
+        <SolidColorBrush x:Key="AccentPrimary" Color="#2563EB"/>
+        <SolidColorBrush x:Key="AccentSuccess" Color="#10B981"/>
+        <SolidColorBrush x:Key="AccentPurple" Color="#7C3AED"/>
+        <SolidColorBrush x:Key="AccentOrange" Color="#F59E0B"/>
+        <SolidColorBrush x:Key="RowHover" Color="#F1F5F9"/>
+
+        <!-- 徽标与按钮样式 -->
+        <Style x:Key="HeaderBadge" TargetType="Border">
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="8,3"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Background" Value="#EEF2F6"/>
+        </Style>
+
+        <Style x:Key="ActionBtn" TargetType="Button">
+            <Setter Property="Padding" Value="14,7"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- 头部标题与模型信息 -->
+            <RowDefinition Height="Auto"/> <!-- 搜索与筛选工具栏 -->
+            <RowDefinition Height="*"/>    <!-- 参数列表 DataGrid -->
+            <RowDefinition Height="Auto"/> <!-- 底部操作与统计栏 -->
+        </Grid.RowDefinitions>
+
+        <!-- 1. 头部区域 -->
+        <Border Grid.Row="0" Background="{DynamicResource HeaderBg}" CornerRadius="8" Padding="16,12" Margin="0,0,0,12" BorderBrush="{DynamicResource BorderBrushColor}" BorderThickness="1">
+            <DockPanel LastChildFill="True">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
+                    <Border Style="{StaticResource HeaderBadge}" Background="#E0E7FF">
+                        <TextBlock x:Name="lbl_stat_total" Text="总参数: 0" Foreground="#3730A3" FontWeight="Bold" FontSize="12"/>
+                    </Border>
+                    <Border Style="{StaticResource HeaderBadge}" Background="#EFF6FF">
+                        <TextBlock x:Name="lbl_stat_project" Text="普通项目参数(可转): 0" Foreground="#1D4ED8" FontWeight="Bold" FontSize="12"/>
+                    </Border>
+                    <Border Style="{StaticResource HeaderBadge}" Background="#ECFDF5">
+                        <TextBlock x:Name="lbl_stat_shared" Text="共享参数: 0" Foreground="#047857" FontWeight="Bold" FontSize="12"/>
+                    </Border>
+                    <Border Style="{StaticResource HeaderBadge}" Background="#F3F4F6">
+                        <TextBlock x:Name="lbl_stat_builtin" Text="系统内置: 0" Foreground="#4B5563" FontSize="12"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="⚡ 项目参数转共享与数值管理器" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource TextPrimary}" Margin="0,0,10,0"/>
+                        <Border Background="#EDE9FE" CornerRadius="4" Padding="6,2">
+                            <TextBlock Text="v1.0 生产级" FontSize="11" Foreground="{DynamicResource AccentPurple}" FontWeight="SemiBold"/>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                        <TextBlock Text="当前项目文档:" Foreground="{DynamicResource TextSecondary}" FontSize="12" Margin="0,0,6,0"/>
+                        <TextBlock x:Name="lbl_doc_title" Text="加载中..." FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" FontSize="12" Margin="0,0,12,0"/>
+                        <TextBlock x:Name="lbl_doc_path" Text="" Foreground="{DynamicResource TextSecondary}" FontSize="11" TextTrimming="CharacterEllipsis" MaxWidth="450"/>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- 2. 搜索与筛选工具栏 -->
+        <Border Grid.Row="1" Background="{DynamicResource CardBg}" CornerRadius="8" Padding="12,10" Margin="0,0,0,10" BorderBrush="{DynamicResource BorderBrushColor}" BorderThickness="1">
+            <DockPanel LastChildFill="True">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
+                    <CheckBox x:Name="chk_select_all" Content="全选可转项" VerticalAlignment="Center" Margin="0,0,14,0" FontWeight="SemiBold" Click="OnSelectAllClicked"/>
+                    <CheckBox x:Name="chk_only_convertible" Content="仅看可转化" VerticalAlignment="Center" Margin="0,0,14,0" Click="OnFilterChanged"/>
+                    <CheckBox x:Name="chk_only_modified" Content="仅看待保存数值" VerticalAlignment="Center" Margin="0,0,10,0" Click="OnFilterChanged"/>
+                    <Button Content=" 🔄 刷新列表 " Padding="8,4" FontSize="12" Click="OnRefreshClicked" Cursor="Hand"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="搜索:" VerticalAlignment="Center" Margin="0,0,6,0" Foreground="{DynamicResource TextSecondary}"/>
+                    <TextBox x:Name="txt_search" Width="240" Padding="6,4" FontSize="12" Margin="0,0,12,0" TextChanged="OnSearchTextChanged" ToolTip="支持搜索参数名称、分组、类别、GUID、当前数值"/>
+                    <TextBlock Text="性质筛选:" VerticalAlignment="Center" Margin="0,0,6,0" Foreground="{DynamicResource TextSecondary}"/>
+                    <ComboBox x:Name="cmb_nature_filter" Width="140" Padding="4,3" SelectedIndex="0">
+                        <ComboBoxItem Content="全部参数性质" Tag="all"/>
+                        <ComboBoxItem Content="仅普通项目参数 (可转)" Tag="project"/>
+                        <ComboBoxItem Content="仅共享参数" Tag="shared"/>
+                        <ComboBoxItem Content="仅系统内置" Tag="builtin"/>
+                    </ComboBox>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- 3. 核心数据表 (DataGrid) -->
+        <Border Grid.Row="2" Background="{DynamicResource CardBg}" CornerRadius="8" BorderBrush="{DynamicResource BorderBrushColor}" BorderThickness="1" Padding="1">
+            <DataGrid x:Name="dg_params" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" CanUserResizeRows="False" GridLinesVisibility="Horizontal"
+                      HorizontalGridLinesBrush="#E5E7EB" HeadersVisibility="Column"
+                      BorderThickness="0" Background="Transparent" RowHeaderWidth="0"
+                      AlternationCount="2" SelectionMode="Extended">
+                <DataGrid.Columns>
+                    <!-- 勾选转换列 -->
+                    <DataGridCheckBoxColumn Header="选" Binding="{Binding is_checked, UpdateSourceTrigger=PropertyChanged}" Width="35"/>
+
+                    <!-- 序号 -->
+                    <DataGridTextColumn Header="序号" Binding="{Binding index}" Width="45" IsReadOnly="True"/>
+
+                    <!-- 参数名称 -->
+                    <DataGridTextColumn Header="参数名称" Binding="{Binding name}" Width="150" IsReadOnly="True" FontWeight="Bold"/>
+
+                    <!-- 参数性质 -->
+                    <DataGridTextColumn Header="参数性质" Binding="{Binding nature_label}" Width="110" IsReadOnly="True"/>
+
+                    <!-- 转化状态 -->
+                    <DataGridTextColumn Header="转化状态" Binding="{Binding convert_status_label}" Width="90" IsReadOnly="True"/>
+
+                    <!-- GUID (共享参数) -->
+                    <DataGridTextColumn Header="GUID (共享标识)" Binding="{Binding guid}" Width="140" IsReadOnly="True"/>
+
+                    <!-- 数据类型 -->
+                    <DataGridTextColumn Header="数据类型" Binding="{Binding param_type_label}" Width="95" IsReadOnly="True"/>
+
+                    <!-- 参数分组 -->
+                    <DataGridTextColumn Header="参数分组" Binding="{Binding group_name}" Width="90" IsReadOnly="True"/>
+
+                    <!-- 作用范围 -->
+                    <DataGridTextColumn Header="范围" Binding="{Binding scope_label}" Width="75" IsReadOnly="True"/>
+
+                    <!-- 关联类别 -->
+                    <DataGridTextColumn Header="关联类别" Binding="{Binding categories_label}" Width="130" IsReadOnly="True"/>
+
+                    <!-- 当前数值 (支持在表中直接编辑) -->
+                    <DataGridTextColumn Header="参数数值 (可直接在表中修改)" Binding="{Binding current_value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Width="*"/>
+
+                    <!-- 数值修改状态 -->
+                    <DataGridTextColumn Header="数值状态" Binding="{Binding value_status_label}" Width="80" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <!-- 4. 底部操作栏与状态 -->
+        <Border Grid.Row="3" Background="{DynamicResource HeaderBg}" CornerRadius="8" Padding="14,10" Margin="0,10,0,0" BorderBrush="{DynamicResource BorderBrushColor}" BorderThickness="1">
+            <DockPanel LastChildFill="True">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
+                    <Button x:Name="btn_convert_all" Content=" ⚡ 一键全部转为共享参数 " Background="#7C3AED" Foreground="White" BorderThickness="0" Style="{StaticResource ActionBtn}" Click="OnConvertAllClicked" ToolTip="将表中所有普通项目参数一键转化为共享参数，并无损迁移全部图元数值"/>
+                    <Button x:Name="btn_convert_selected" Content=" 🔄 转化所选参数 " Background="#2563EB" Foreground="White" BorderThickness="0" Style="{StaticResource ActionBtn}" Click="OnConvertSelectedClicked" ToolTip="仅转化勾选的普通项目参数"/>
+                    <Button x:Name="btn_save_values" Content=" 💾 保存数值修改 " Background="#10B981" Foreground="White" BorderThickness="0" Style="{StaticResource ActionBtn}" Click="OnSaveValuesClicked" ToolTip="将表格中修改后的数值写入 Revit 模型"/>
+                    <Button Content=" ❌ 退出 " Padding="12,7" FontSize="12" IsCancel="True" Cursor="Hand"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content=" 📁 共享参数文件 " Padding="6,3" FontSize="11" Margin="0,0,10,0" Click="OnOpenSharedParamFileClicked" ToolTip="查看或配置当前关联的共享参数文件"/>
+                    <TextBlock x:Name="lbl_status_msg" Text="就绪" Foreground="{DynamicResource TextSecondary}" FontSize="12" VerticalAlignment="Center"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

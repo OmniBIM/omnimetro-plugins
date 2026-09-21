@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "plugin_id": "89071043-6416-5f63-9af9-fc4f2ec28e40",
+  "slug": "liner-master-along-curve",
+  "name": "区间自动建模",
+  "description": "LinerMaster - 地铁区间全专业自动化建模平台。支持族沿线阵列布置与轮廓沿线放样。",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "discipline": "线规",
+  "category": "建模",
+  "tags": [
+    "地铁",
+    "建模",
+    "本地",
+    "线路"
+  ],
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "version": "1.0.0",
+  "license": "Proprietary",
+  "features": [
+    "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "revit_api"
+  ],
+  "created_at": "2026-08-21",
+  "updated_at": "2026-08-21",
+  "migration": {
+    "source": "OmniMetro/LinerMaster.extension/LinerMaster.tab/Placement.panel/AlongCurve.pushbutton",
+    "strategy": "embedded-payload"
+  },
+  "files": {
+    "README.md": "4803aef1df8484598b677a68678086075216cc44e866677a2c0697a9b5b50cdc",
+    "plugin.json": "3bd0af8dd573d9cba494e351c91df012be08f338a54101e967636bfd4b01c979",
+    "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+    "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/feature.json": "cb84038ae7fe078df5f39ab630d8084af05979f17ee95111f652b26e689e5df9",
+    "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/payload/bundle.yaml": "3862e2bc940739f69108263d0a7fbb4cf08c982dcba9f19c98df8b5f983643fe",
+    "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/payload/icon.png": "3a4156256c340a6802439b59d09085d2147812da862805bc519cd5f44a3acb06",
+    "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/payload/script.py": "f66758f2d0c455921dc973634e260771899afe2a4ffefae43b4e003778c7786f",
+    "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/payload/ui.xaml": "002ae47dfb196b901d31bf1f6397f48008a120e1dfd4f4164b8a7752faf16cfd",
+    "vendor/liner_master/__init__.py": "33d8f536e7b1b265d13b43bf2cb44dacb17b7c47cf007588c66f74842ea05772",
+    "vendor/liner_master/alignment.py": "cb52c06ba449ccfd551a27527838f714b3a9824192fb96b3650eac8ed91feca4",
+    "vendor/liner_master/core.py": "b1f365f6e48649c2c0bdf8c0e59ac76f1dfbbcb3c62795ba0aa608aedcea4cab",
+    "vendor/liner_master/db.py": "1de9f1c3322578303363ab1906a52065ba06df51143f263a91234b0558166b12"
+  },
+  "iteration_count": 0
+}

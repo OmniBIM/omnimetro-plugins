@@ -1,0 +1,47 @@
+{
+  "author": {
+    "organization": "",
+    "name": "OmniBIM",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "category": "参数管理",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "schema_version": 1,
+  "description": "批量编辑平面视图名称，支持添加前后缀/查找替换，具备前置对比预览、冲突自动拦截与事务安全回滚。",
+  "license": "Proprietary",
+  "discipline": "通用",
+  "name": "平面视图名称批量编辑器",
+  "slug": "plan-view-renamer",
+  "files": {
+    "README.md": "7941b9ac2c83f60fca05ab0c2278d9e41979c79fde9cdef0d0993efc748560a0",
+    "plugin.json": "cd4133621be404088992a32cfcbe93fe2c96bdb8c431d581191c6cb57db4e4b1",
+    "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/entrypoint.py": "738d4609b92da7515afdf6c4d0b43ad4d861375b5b7de9a4176aa26e877f6c89",
+    "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/feature.json": "dd8bfb0841558a0c1db2a4aae1b2f34068559a750245d686002e8919c70364ea",
+    "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/payload/bundle.yaml": "74187ed4bb37a4b590c8e67a14505b93adca0469149dacb1da47c647a04964c9",
+    "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/payload/icon.png": "c8aa3fbb3a22dc496a0e8e6c7a8f0d04afeb66bc1b6c14c6674f8f44d3fe93e4",
+    "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/payload/script.py": "32ebf6fe8a2d5a640dc017a62b58f7a41af72a50f818cf25c9dd036208fac94f"
+  },
+  "features": [
+    "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer"
+  ],
+  "dependencies": [],
+  "tags": [
+    "本地",
+    "通用",
+    "参数管理"
+  ],
+  "created_at": "2026-09-03",
+  "version": "1.0.5",
+  "updated_at": "2026-09-05",
+  "iteration_count": 0,
+  "plugin_id": "ac747a87-5b55-4123-99e0-7ba27e89342b",
+  "permissions": [
+    "revit_api"
+  ]
+}

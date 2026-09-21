@@ -1,0 +1,9 @@
+title: "族实例数量统计浏览器"
+tooltip: "统计当前项目每个族及其族类型的已放置模型实例数量。"
+author: "OmniBIM"
+version: "1.0.2"
+discipline: "通用"
+category: "建模"
+min_revit_version: 2018
+max_revit_version: 2030
+uuid: "3c3153eb-294f-449b-8d35-42208394dfc5"

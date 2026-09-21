@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "feature_id": "49c1f82b-f32c-5d11-995b-60f39be5bd5d",
+  "plugin_id": "86cf9a91-441b-5913-bf4f-9993b5de1f6f",
+  "slug": "base-point-manager",
+  "name": "base-point-manager",
+  "title": "项目基点批量管理器",
+  "description": "批量提取和修改多个 Revit 文件的项目基点数据。",
+  "discipline": "通用",
+  "category": "协同",
+  "capability_id": "revit.base-point.manager",
+  "entrypoint": "entrypoint.py",
+  "icon": "payload/icon.png",
+  "min_revit": 2018,
+  "max_revit": 2030,
+  "tags": [
+    "协同",
+    "坐标",
+    "批量",
+    "本地"
+  ],
+  "permissions": [
+    "revit_api"
+  ],
+  "evaluation": {
+    "benchmark_suite": "",
+    "benchmark_score": null
+  }
+}

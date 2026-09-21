@@ -1,0 +1,8 @@
+title: 批量图纸管理
+tooltip: 批量维护图纸名称、图纸编号及图纸实例参数；可从一张源图纸复制所选属性到多张图纸。
+author: "OmniBIM"
+discipline: 通用
+category: 协同
+tags: 本地,协同,图纸,出图,参数管理
+load_group: 核心工具
+version: 1.2.0

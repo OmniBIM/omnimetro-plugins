@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "plugin_id": "ab18371c-2a57-46bb-bdcd-a16b24ccdef8",
+  "slug": "project-param-batch-manager",
+  "name": "项目参数批量管理器",
+  "description": "选择多个 Revit 文件，自动提取项目基点与全部项目参数（内置 + 项目/共享参数），支持新增项目参数并批量修改所有项目参数。",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "discipline": "通用",
+  "category": "协同",
+  "tags": [
+    "协同",
+    "项目参数",
+    "项目基点",
+    "批量",
+    "多文件",
+    "本地"
+  ],
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "version": "1.0.0",
+  "license": "Proprietary",
+  "features": [
+    "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "revit_api"
+  ],
+  "created_at": "2026-08-21",
+  "updated_at": "2026-08-21",
+  "files": {
+    "README.md": "808d327d87a82c8d7d4f5b849e5aa3c879777b33de3f2e89721ba0f2b33e4188",
+    "plugin.json": "c4a786f386c04c41b2453a4f1bf1b025764f696931ca968b91c763c17dce7b8f",
+    "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/entrypoint.py": "ccfed63812fa3fd5b381246fe67c2ee6adbffe116d42b1a5bf737068e88ea7e7",
+    "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/feature.json": "9b36ce5bb6716ff61d697d89a0a391736d57c5f4928dfe3991a9e2465d1d1ba0",
+    "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/bundle.yaml": "3cb491137c6eae8bd974344e730220aec4752f40846ded32202da95b44d2bc43",
+    "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/core_business.py": "93ae2a5c9553eec10b35a7f68109753f5478436b1cd8245d05ef085617457fc5",
+    "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/icon.png": "00eadd189fb9c75ec6c5b2fb19168bb23f1caee25b40c5312326be0262ee9524",
+    "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/revit_adapter.py": "e918feb184f8889e5177963b96727bb968680adf0a139d6299e655bb2ba3a93a",
+    "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/script.py": "b209bfd24700b548ae6ba3ec07555720814c5f7cd39169e13f7d4bceaeb6bd14",
+    "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/ui.xaml": "9700381f49c15e35f16240d79f989a4ace7c91347a68b96b3e1d47391bf63f70"
+  },
+  "iteration_count": 0
+}

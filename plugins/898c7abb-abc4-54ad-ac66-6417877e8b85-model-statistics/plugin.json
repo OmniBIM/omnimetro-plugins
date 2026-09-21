@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "plugin_id": "898c7abb-abc4-54ad-ac66-6417877e8b85",
+  "slug": "model-statistics",
+  "name": "模型统计",
+  "description": "按范围筛选指定族/类型，统计族实例数量，并将全部图纸编号与名称导出为 XLSX。",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "discipline": "通用",
+  "category": "协同",
+  "tags": [
+    "本地",
+    "协同",
+    "模型统计",
+    "电缆桥架",
+    "图纸"
+  ],
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "version": "1.2.0",
+  "license": "Proprietary",
+  "features": [
+    "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "revit_api"
+  ],
+  "created_at": "2026-08-21",
+  "updated_at": "2026-08-21",
+  "migration": {
+    "source": "TKbox/TKbox.extension/TKbox.tab/协同工具.panel/模型统计.pushbutton",
+    "strategy": "embedded-payload"
+  },
+  "files": {
+    "README.md": "0e20ec3b55df5b6e6e1d5629402837542d3567a5200d55f7c4ce6b3d9acbc2df",
+    "plugin.json": "4c9b630ec6ef9697e32bfed39a963f97435c17c29fec902125d4fb03dbdf7ec9",
+    "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+    "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/feature.json": "a39fc8153a8d216226edb73274067465f96111615ebeb5ea18f567a0a3eedb82",
+    "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/payload/bundle.yaml": "5c3503c58bde3bc98071beedd8e4fff95d1a762c24059ad6ca31f6d313b570b8",
+    "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/payload/script.py": "31e4228f51c7069b6934de91b450bad4c464c1edcd2dcc5cb8f4329d4db4f269",
+    "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/payload/ui.xaml": "6f259742bc20b333a795545070e52064903dfa2d706002165af424833fa67277"
+  },
+  "iteration_count": 0
+}

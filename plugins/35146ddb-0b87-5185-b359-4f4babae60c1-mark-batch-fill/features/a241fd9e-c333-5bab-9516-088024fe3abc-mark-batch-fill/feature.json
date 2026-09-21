@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "feature_id": "a241fd9e-c333-5bab-9516-088024fe3abc",
+  "plugin_id": "35146ddb-0b87-5185-b359-4f4babae60c1",
+  "slug": "mark-batch-fill",
+  "name": "mark-batch-fill",
+  "title": "Mark编码批量填写",
+  "description": "按房间、类型和流水号规则批量填写族实例参数编码。",
+  "discipline": "通用",
+  "category": "协同",
+  "capability_id": "revit.mark.batch-fill",
+  "entrypoint": "entrypoint.py",
+  "icon": "",
+  "min_revit": 2018,
+  "max_revit": 2030,
+  "tags": [
+    "本地",
+    "协同",
+    "参数",
+    "编码",
+    "房间"
+  ],
+  "permissions": [
+    "revit_api"
+  ],
+  "evaluation": {
+    "benchmark_suite": "",
+    "benchmark_score": null
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "family-instance-type-count-dashboard", 
+  "title": "族实例数量统计浏览器", 
+  "feature_id": "3c3153eb-294f-449b-8d35-42208394dfc5", 
+  "entrypoint": "entrypoint.py", 
+  "category": "建模", 
+  "discipline": "通用", 
+  "plugin_id": "6a4a3d85-3c8e-452f-897e-0d1a015dba71", 
+  "description": "统计当前项目每个族及其族类型的已放置模型实例数量。", 
+  "icon": "payload/icon.png", 
+  "schema_version": 1, 
+  "max_revit": 2030, 
+  "tags": [
+    "本地", 
+    "通用", 
+    "建模"
+  ], 
+  "permissions": [
+    "revit_api"
+  ], 
+  "min_revit": 2018
+}

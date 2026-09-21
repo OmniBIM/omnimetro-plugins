@@ -1,0 +1,8 @@
+title: 模型统计
+tooltip: 按范围筛选指定族或类型、统计族实例并导出图纸名称。
+author: "OmniBIM"
+discipline: 通用
+category: 协同
+tags: 本地,协同,模型统计,电缆桥架,图纸
+load_group: 核心工具
+version: 1.2.0

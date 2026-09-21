@@ -1,0 +1,8 @@
+title: 桥梁接触网布置
+tooltip: 框选拼接高架桥的桥面族，自动拟合中心线并生成轨道、桥边挡板；接触网支柱间距可输入，默认 40 米。
+author: "OmniBIM"
+discipline: 电化
+category: 建模
+tags: 本地,电化,桥梁,接触网,轨道,挡板,自适应族
+load_group: 核心工具
+version: 2.7.0

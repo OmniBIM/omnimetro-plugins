@@ -1,0 +1,22 @@
+{
+  "slug": "mep-set-system-type", 
+  "title": "机电图元所属系统批量指定工具", 
+  "feature_id": "f727ca63-51ec-497c-82b1-4fc4c95e72a1", 
+  "entrypoint": "entrypoint.py", 
+  "category": "参数管理", 
+  "discipline": "机电", 
+  "plugin_id": "9592e6db-ce8a-49cc-ba3d-60eef87e7554", 
+  "description": "将选中的桥架、线管、管道、风管及管件/配件批量指定到目标所属系统类型，执行前自动扫描、预览、高亮冲突并防护只读图元。", 
+  "icon": "payload/icon.png", 
+  "schema_version": 1, 
+  "max_revit": 2030, 
+  "tags": [
+    "本地", 
+    "机电", 
+    "参数管理"
+  ], 
+  "permissions": [
+    "revit_api"
+  ], 
+  "min_revit": 2018
+}

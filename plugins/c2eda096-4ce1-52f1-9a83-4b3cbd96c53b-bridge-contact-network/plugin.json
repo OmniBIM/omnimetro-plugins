@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "plugin_id": "c2eda096-4ce1-52f1-9a83-4b3cbd96c53b",
+  "slug": "bridge-contact-network",
+  "name": "桥梁接触网布置",
+  "description": "框选拼接高架桥的桥面族，自动拟合中心线并生成轨道、桥边挡板；接触网支柱间距可输入，默认 40 米。",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "discipline": "电化",
+  "category": "建模",
+  "tags": [
+    "本地",
+    "电化",
+    "桥梁",
+    "接触网",
+    "轨道",
+    "挡板",
+    "自适应族"
+  ],
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "version": "2.7.0",
+  "license": "Proprietary",
+  "features": [
+    "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "revit_api"
+  ],
+  "created_at": "2026-08-21",
+  "updated_at": "2026-08-21",
+  "migration": {
+    "source": "TKbox/TKbox.extension/TKbox.tab/电化工具.panel/桥梁接触网布置.pushbutton",
+    "strategy": "embedded-payload"
+  },
+  "files": {
+    "README.md": "250bcb9db8365a555b34b4570697f975b1b4a0e0a0ab12e2f837926f5e2b27a4",
+    "plugin.json": "531a2332c883d18bd680003d505541dd7af3e8775ccdad04cc1226549a9bb7de",
+    "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+    "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/feature.json": "830498db7c818b3190af90befbd7d5c89ac6a0a38f01d5240b45023385e24838",
+    "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/payload/bundle.yaml": "7cbcf1cd2f4e0646c70ed597b1eec0b11407d290a0b98d284714fa9211caf414",
+    "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/payload/script.py": "5cc466aa9d4a159011bf460ae35f5e5bfe7cd69a8f6fc5b1940e417643cdade8",
+    "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/payload/wizard.xaml": "c0f526cb1fad784a7c8acc80cdced8095b401aac88890f68f5850d31c8d6e6f1"
+  },
+  "iteration_count": 0
+}

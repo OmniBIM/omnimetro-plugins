@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "plugin_id": "e45e1a98-b8ab-5d99-8e84-11ee88037942",
+  "slug": "view-assistant",
+  "name": "视图助手",
+  "description": "本地 pyRevit 视图工具。",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "discipline": "通用",
+  "category": "视图",
+  "tags": [
+    "出图",
+    "本地",
+    "管理",
+    "视图"
+  ],
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "version": "1.0.0",
+  "license": "Proprietary",
+  "features": [
+    "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "revit_api"
+  ],
+  "created_at": "2026-08-21",
+  "updated_at": "2026-08-21",
+  "migration": {
+    "source": "TKbox/TKbox.extension/TKbox.tab/视图工具.panel/视图助手.pushbutton",
+    "strategy": "embedded-payload"
+  },
+  "files": {
+    "README.md": "399ff880a62fd9a4f9721e6abda9dd7e0832e4fb0def10c37e28f7b9641d6594",
+    "plugin.json": "217a30516d5903e3543a0e81599b51435e38a7bb3f259b6f83ff203f20cf42b9",
+    "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+    "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/feature.json": "169e406e45e91b5211b5e65d4ebf708b693f4f1a1560dd005afb5b30f164e3b6",
+    "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/payload/icon.png": "2fa8c56363332038e34a2d21290cf99fca5abc34e01c16391c977353cc6f4e99",
+    "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/payload/launcher.xaml": "78c1f7854567f8f082e5ab0d4a29709e4905849588f52a8da034cdc331f8a629",
+    "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/payload/script.py": "aff76611b4a21932a8b81c9a4b5776771e17b8a3e7db291f0345219818a480c9",
+    "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/payload/ui.xaml": "7447338373b6383b62858beaa1e01c3374052640ea04efc649ff3674d5f48405"
+  },
+  "iteration_count": 0
+}

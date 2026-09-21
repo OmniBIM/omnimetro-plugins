@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "feature_id": "dad43bce-c07c-55ea-9cba-35febb2e3482",
+  "plugin_id": "c2eda096-4ce1-52f1-9a83-4b3cbd96c53b",
+  "slug": "bridge-contact-network",
+  "name": "bridge-contact-network",
+  "title": "桥梁接触网布置",
+  "description": "框选拼接高架桥的桥面族，自动拟合中心线并生成轨道、桥边挡板；接触网支柱间距可输入，默认 40 米。",
+  "discipline": "电化",
+  "category": "建模",
+  "capability_id": "revit.bridge.contact-network",
+  "entrypoint": "entrypoint.py",
+  "icon": "",
+  "min_revit": 2018,
+  "max_revit": 2030,
+  "tags": [
+    "本地",
+    "电化",
+    "桥梁",
+    "接触网",
+    "轨道",
+    "挡板",
+    "自适应族"
+  ],
+  "permissions": [
+    "revit_api"
+  ],
+  "evaluation": {
+    "benchmark_suite": "",
+    "benchmark_score": null
+  }
+}

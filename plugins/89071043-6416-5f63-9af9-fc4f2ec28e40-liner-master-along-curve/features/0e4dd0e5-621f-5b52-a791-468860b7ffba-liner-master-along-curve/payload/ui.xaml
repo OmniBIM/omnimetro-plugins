@@ -1,0 +1,1273 @@
+<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="区间自动建模 - LinerMaster"
+    Height="680"
+    Width="1380"
+    MinHeight="520"
+    MinWidth="1100"
+    MaxHeight="750"
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="CanResize"
+    Background="#FFEAF0F5">
+    <Window.Resources>
+        <Style x:Key="CardBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#FFFDFEFF" />
+            <Setter Property="BorderBrush" Value="#FFD7E1EA" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="18" />
+            <Setter Property="Padding" Value="16" />
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Padding" Value="12,4" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF1D5F8C" />
+            <Setter Property="BorderBrush" Value="#FF1D5F8C" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Padding" Value="12,4" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <Setter Property="Foreground" Value="#FF193245" />
+            <Setter Property="Background" Value="#FFF6F9FC" />
+            <Setter Property="BorderBrush" Value="#FFD4DEE7" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="CompactTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Margin" Value="0,6,0,0" />
+            <Setter Property="Padding" Value="8,4" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#FFD2DCE6" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="SectionTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="#FF13283D" />
+        </Style>
+
+        <Style x:Key="InfoPanelStyle" TargetType="Border">
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Background" Value="#FFF5F8FB" />
+            <Setter Property="BorderBrush" Value="#FFE0E7EE" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <Style x:Key="DataGridStyle" TargetType="DataGrid">
+            <Setter Property="Background" Value="#FFFDFEFF" />
+            <Setter Property="BorderBrush" Value="#FFD9E2EB" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="RowBackground" Value="White" />
+            <Setter Property="AlternatingRowBackground" Value="#FFF5F8FB" />
+            <Setter Property="GridLinesVisibility" Value="Horizontal" />
+            <Setter Property="HeadersVisibility" Value="Column" />
+            <Setter Property="CanUserAddRows" Value="False" />
+            <Setter Property="CanUserDeleteRows" Value="False" />
+            <Setter Property="IsReadOnly" Value="True" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                CornerRadius="22"
+                Padding="22"
+                Margin="0,0,0,16"
+                BorderBrush="#FF17334A"
+                BorderThickness="1">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF112739" Offset="0" />
+                    <GradientStop Color="#FF193E58" Offset="0.58" />
+                    <GradientStop Color="#FF1F5B7C" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="340" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="区间自动建模"
+                               FontSize="30"
+                               FontWeight="SemiBold"
+                               Foreground="White" />
+                    <TextBlock Margin="0,8,0,0"
+                               Text="LinerMaster - 地铁区间全专业自动化建模平台。作者: xiong"
+                               TextWrapping="Wrap"
+                               Foreground="#FFD9E8F4" />
+                    <WrapPanel Margin="0,15,0,0">
+                        <Button x:Name="btnSaveProject" Content="💾 储存项目数据" Width="140" Height="32" Margin="0,0,10,0" Background="#FF2E8B57" Foreground="White" BorderThickness="0" />
+                        <Button x:Name="btnLoadProject" Content="📂 读取项目数据" Width="140" Height="32" Background="#FF4682B4" Foreground="White" BorderThickness="0" />
+                    </WrapPanel>
+                </StackPanel>
+
+                <Border Grid.Column="1"
+                        Background="#1AFFFFFF"
+                        BorderBrush="#33FFFFFF"
+                        BorderThickness="1"
+                        CornerRadius="16"
+                        Padding="14">
+                    <StackPanel>
+                        <TextBlock Text="生成进度"
+                                   Foreground="#FFD9E8F4"
+                                   FontWeight="SemiBold" />
+                        <ProgressBar x:Name="prgBuild"
+                                     Height="12"
+                                     Margin="0,10,0,8"
+                                     Minimum="0"
+                                     Maximum="100"
+                                     Value="0" />
+                        <TextBlock x:Name="txtProgressInfo"
+                                   Text="等待开始。"
+                                   Foreground="White"
+                                   TextWrapping="Wrap" />
+                        <TextBlock x:Name="txtElapsed"
+                                   Margin="0,6,0,0"
+                                   Text="耗时: 0.0 s"
+                                   Foreground="#FFD9E8F4" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <TabControl x:Name="tabMain" Grid.Row="1" Margin="0,0,0,12" Background="Transparent" BorderThickness="0">
+            
+            <TabItem Header="总控与线路 (Dashboard/Route)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="320"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="路径选择 (全专业通用)" Style="{StaticResource SectionTitleStyle}" />
+                                    <Button x:Name="btnSelectCurve" Style="{StaticResource PrimaryButtonStyle}" Margin="0,10,0,0" Content="选择现有模型路径线/边" />
+                                    <Border Style="{StaticResource InfoPanelStyle}">
+                                        <TextBlock x:Name="txtCurveInfo" Text="尚未选择路径。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                            
+                        <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                            <StackPanel>
+                                <TextBlock Text="项目基点设置 (Project Base Point)" Style="{StaticResource SectionTitleStyle}" />
+                                <Grid Margin="0,10,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Margin="0,0,8,8">
+                                        <TextBlock Text="北/南 (N/S) (m)" Foreground="#FF223648" />
+                                        <TextBox x:Name="txtBasePointN" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Margin="8,0,0,8">
+                                        <TextBlock Text="东/西 (E/W) (m)" Foreground="#FF223648" />
+                                        <TextBox x:Name="txtBasePointE" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                        <TextBlock Text="高程 (Elev) (m)" Foreground="#FF223648" />
+                                        <TextBox x:Name="txtBasePointElev" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                        <TextBlock Text="正北角度 (deg)" Foreground="#FF223648" />
+                                        <TextBox x:Name="txtBasePointAngle" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                    </StackPanel>
+                                </Grid>
+                                <Button x:Name="btnApplyBasePoint" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="应用基点修改" Background="#FFB22222" BorderBrush="#FFB22222" />
+                            </StackPanel>
+                        </Border>
+    
+                            
+                        <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                            <StackPanel>
+                                <TextBlock Text="分段生成控制 (长线路分段生成)" Style="{StaticResource SectionTitleStyle}" />
+                                <Grid Margin="0,10,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                        <TextBlock Text="起始距离/里程 (m)" Foreground="#FF223648" />
+                                        <TextBox x:Name="txtStartDist_Dashboard" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                        <TextBlock Text="结束距离/里程 (m)" Foreground="#FF223648" />
+                                        <TextBox x:Name="txtEndDist_Dashboard" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    </StackPanel>
+                                </Grid>
+                                <TextBlock Text="分段长度 (m，留空则不切断)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                <TextBox x:Name="txtSegmentLength_Dashboard" Style="{StaticResource CompactTextBoxStyle}" Text="500" />
+                            </StackPanel>
+                        </Border>
+    
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="线路数据导入" Style="{StaticResource SectionTitleStyle}" />
+                                    <Button x:Name="btnImportAlignmentCSV" Style="{StaticResource PrimaryButtonStyle}" Content="导入线路坐标文件 (CSV/TXT)" />
+                                    <Button x:Name="btnGenerateAlignmentSpline" Style="{StaticResource SecondaryButtonStyle}" Content="根据数据生成三维中心线" />
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="📖 区间自动建模 - 使用指南" FontSize="16" FontWeight="Bold" Foreground="#FF223648" Margin="0,0,0,12" />
+                            <StackPanel Grid.Row="1" Margin="0,0,0,16">
+                                <TextBlock Text="1. 项目基点：" FontWeight="Bold" Foreground="#FF1F6E43" />
+                                <TextBlock Text="您可以直接在左侧修改当前文档的项目基点（米制坐标），点击应用即可生效。" TextWrapping="Wrap" Foreground="#FF5C6B78" Margin="10,4,0,8" />
+                                <TextBlock Text="2. 指定路径：" FontWeight="Bold" Foreground="#FF1F6E43" />
+                                <TextBlock Text="导入CSV坐标点生成三维路线，或者直接拾取图中的路径线。" TextWrapping="Wrap" Foreground="#FF5C6B78" Margin="10,4,0,8" />
+                                <TextBlock Text="3. 设定限界与任务：" FontWeight="Bold" Foreground="#FF1F6E43" />
+                                <TextBlock Text="在各专业面板配置参数并点击“添加”，最后统一生成。" TextWrapping="Wrap" Foreground="#FF5C6B78" Margin="10,4,0,8" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                <TextBlock Text="📋 生成任务队列" Style="{StaticResource SectionTitleStyle}"/>
+                                <Button x:Name="btnRemoveQueueTask" Content="删除选中" Width="80" Height="24" Margin="16,0,0,0" Background="#FFCD5C5C" Foreground="White" BorderThickness="0" />
+                                <Button x:Name="btnClearQueue" Content="清空队列" Width="80" Height="24" Margin="8,0,0,0" Background="#FF888888" Foreground="White" BorderThickness="0" />
+                            </StackPanel>
+                            <DataGrid x:Name="gridTaskQueue" Grid.Row="3" Margin="0,12,0,0" Style="{StaticResource DataGridStyle}" AutoGenerateColumns="False" SelectionMode="Single">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="序号" Binding="{Binding Index}" Width="40"/>
+                                    <DataGridTextColumn Header="标签" Binding="{Binding Label}" Width="80"/>
+                                    <DataGridTextColumn Header="专业" Binding="{Binding Discipline}" Width="80"/>
+                                    <DataGridTextColumn Header="族名称" Binding="{Binding FamilyName}" Width="*"/>
+                                    <DataGridTextColumn Header="间距" Binding="{Binding Spacing}" Width="65"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+
+            <TabItem Header="限界专业 (Clearance)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="隧道限界与轨面参考设定" Style="{StaticResource SectionTitleStyle}" />
+                                    <StackPanel Margin="0,10,0,0">
+                                        <TextBlock Text="隧道内径 (mm)" Foreground="#FF223648" />
+                                        <TextBox x:Name="txtClearanceInnerDia" Style="{StaticResource CompactTextBoxStyle}" Text="5400" />
+                                    </StackPanel>
+                                    <StackPanel Margin="0,10,0,0">
+                                        <TextBlock Text="隧道外径 (mm)" Foreground="#FF223648" />
+                                        <TextBox x:Name="txtClearanceOuterDia" Style="{StaticResource CompactTextBoxStyle}" Text="6000" />
+                                    </StackPanel>
+                                    <StackPanel Margin="0,10,0,0">
+                                        <TextBlock Text="轨面高度 (距中心 mm)" Foreground="#FF223648" />
+                                        <TextBox x:Name="txtClearanceTrackHeight" Style="{StaticResource CompactTextBoxStyle}" Text="-1500" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock Text="限界参考截面" Foreground="#FF5C6B78" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                            <Viewbox Margin="20,40,20,20" MaxHeight="520" Stretch="Uniform">
+                                <Canvas x:Name="canvasPreview_Clearance" Width="800" Height="800" Background="#FFFDFEFF" ClipToBounds="True"></Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+
+            <TabItem Header="轨道专业 (Track)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="构件阵列布置" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectFamily_Track" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择族类型" />
+                                        <Button x:Name="btnPickPlacedFamily_Track" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从实例取类型" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtFamilyInfo_Track" Text="尚未选择族类型。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="布置间距 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSpacing_Track" Style="{StaticResource CompactTextBoxStyle}" Text="625" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="布置数量 (空为自动)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtCount_Track" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,8">
+                                            <TextBlock Text="水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalOffset_Track" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,8">
+                                            <TextBlock Text="垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalOffset_Track" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="水平角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalRotation_Track" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="垂直角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalRotation_Track" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtArrayLabel_Track" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddArrayTask_Track" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加阵列任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                            
+                            <Border Style="{StaticResource CardBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="轮廓沿线放样" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectProfile_Track" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择面/边轮廓" />
+                                        <Button x:Name="btnSelectProfileFamily_Track" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从轮廓族获取" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtProfileInfo_Track" Text="尚未选择放样轮廓。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="放样水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepHorizontalOffset_Track" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="放样垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepVerticalOffset_Track" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtSweepLabel_Track" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddSweepTask_Track" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加放样任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock Text="轨道专业 (Track) - 限界参考截面" Foreground="#FF5C6B78" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                            <Viewbox Margin="20,40,20,20" MaxHeight="520" Stretch="Uniform">
+                                <Canvas x:Name="canvasPreview_Track" Width="800" Height="800" Background="#FFFDFEFF" ClipToBounds="True">
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+
+            <TabItem Header="建筑专业 (Arch)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="构件阵列布置" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectFamily_Arch" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择族类型" />
+                                        <Button x:Name="btnPickPlacedFamily_Arch" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从实例取类型" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtFamilyInfo_Arch" Text="尚未选择族类型。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="布置间距 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSpacing_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="1000" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="布置数量 (空为自动)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtCount_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,8">
+                                            <TextBlock Text="水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalOffset_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,8">
+                                            <TextBlock Text="垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalOffset_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="水平角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalRotation_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="垂直角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalRotation_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtArrayLabel_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddArrayTask_Arch" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加阵列任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                            
+                            <Border Style="{StaticResource CardBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="轮廓沿线放样" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectProfile_Arch" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择面/边轮廓" />
+                                        <Button x:Name="btnSelectProfileFamily_Arch" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从轮廓族获取" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtProfileInfo_Arch" Text="尚未选择放样轮廓。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="放样水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepHorizontalOffset_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="放样垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepVerticalOffset_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtSweepLabel_Arch" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddSweepTask_Arch" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加放样任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock Text="建筑专业 (Arch) - 限界参考截面" Foreground="#FF5C6B78" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                            <Viewbox Margin="20,40,20,20" MaxHeight="520" Stretch="Uniform">
+                                <Canvas x:Name="canvasPreview_Arch" Width="800" Height="800" Background="#FFFDFEFF" ClipToBounds="True">
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+
+            <TabItem Header="结构专业 (Struct)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="构件阵列布置" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectFamily_Struct" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择族类型" />
+                                        <Button x:Name="btnPickPlacedFamily_Struct" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从实例取类型" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtFamilyInfo_Struct" Text="尚未选择族类型。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="布置间距 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSpacing_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="1000" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="布置数量 (空为自动)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtCount_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,8">
+                                            <TextBlock Text="水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalOffset_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,8">
+                                            <TextBlock Text="垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalOffset_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="水平角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalRotation_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="垂直角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalRotation_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtArrayLabel_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddArrayTask_Struct" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加阵列任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                            
+                            <Border Style="{StaticResource CardBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="轮廓沿线放样" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectProfile_Struct" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择面/边轮廓" />
+                                        <Button x:Name="btnSelectProfileFamily_Struct" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从轮廓族获取" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtProfileInfo_Struct" Text="尚未选择放样轮廓。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="放样水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepHorizontalOffset_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="放样垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepVerticalOffset_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtSweepLabel_Struct" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddSweepTask_Struct" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加放样任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock Text="结构专业 (Struct) - 限界参考截面" Foreground="#FF5C6B78" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                            <Viewbox Margin="20,40,20,20" MaxHeight="520" Stretch="Uniform">
+                                <Canvas x:Name="canvasPreview_Struct" Width="800" Height="800" Background="#FFFDFEFF" ClipToBounds="True">
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+
+            <TabItem Header="通风专业 (Vent)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="构件阵列布置" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectFamily_Vent" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择族类型" />
+                                        <Button x:Name="btnPickPlacedFamily_Vent" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从实例取类型" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtFamilyInfo_Vent" Text="尚未选择族类型。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="布置间距 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSpacing_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="2000" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="布置数量 (空为自动)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtCount_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,8">
+                                            <TextBlock Text="水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalOffset_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,8">
+                                            <TextBlock Text="垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalOffset_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="水平角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalRotation_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="垂直角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalRotation_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtArrayLabel_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddArrayTask_Vent" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加阵列任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                            
+                            <Border Style="{StaticResource CardBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="轮廓沿线放样" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectProfile_Vent" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择面/边轮廓" />
+                                        <Button x:Name="btnSelectProfileFamily_Vent" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从轮廓族获取" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtProfileInfo_Vent" Text="尚未选择放样轮廓。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="放样水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepHorizontalOffset_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="放样垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepVerticalOffset_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtSweepLabel_Vent" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddSweepTask_Vent" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加放样任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock Text="通风专业 (Vent) - 限界参考截面" Foreground="#FF5C6B78" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                            <Viewbox Margin="20,40,20,20" MaxHeight="520" Stretch="Uniform">
+                                <Canvas x:Name="canvasPreview_Vent" Width="800" Height="800" Background="#FFFDFEFF" ClipToBounds="True">
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+
+            <TabItem Header="给排水专业 (Plumb)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="构件阵列布置" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectFamily_Plumb" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择族类型" />
+                                        <Button x:Name="btnPickPlacedFamily_Plumb" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从实例取类型" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtFamilyInfo_Plumb" Text="尚未选择族类型。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="布置间距 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSpacing_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="3000" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="布置数量 (空为自动)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtCount_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,8">
+                                            <TextBlock Text="水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalOffset_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,8">
+                                            <TextBlock Text="垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalOffset_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="水平角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalRotation_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="垂直角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalRotation_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtArrayLabel_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddArrayTask_Plumb" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加阵列任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                            
+                            <Border Style="{StaticResource CardBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="轮廓沿线放样" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectProfile_Plumb" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择面/边轮廓" />
+                                        <Button x:Name="btnSelectProfileFamily_Plumb" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从轮廓族获取" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtProfileInfo_Plumb" Text="尚未选择放样轮廓。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="放样水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepHorizontalOffset_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="放样垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepVerticalOffset_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtSweepLabel_Plumb" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddSweepTask_Plumb" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加放样任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock Text="给排水专业 (Plumb) - 限界参考截面" Foreground="#FF5C6B78" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                            <Viewbox Margin="20,40,20,20" MaxHeight="520" Stretch="Uniform">
+                                <Canvas x:Name="canvasPreview_Plumb" Width="800" Height="800" Background="#FFFDFEFF" ClipToBounds="True">
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+
+            <TabItem Header="动照专业 (Lght)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="构件阵列布置" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectFamily_Lght" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择族类型" />
+                                        <Button x:Name="btnPickPlacedFamily_Lght" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从实例取类型" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtFamilyInfo_Lght" Text="尚未选择族类型。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="布置间距 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSpacing_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="5000" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="布置数量 (空为自动)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtCount_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,8">
+                                            <TextBlock Text="水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalOffset_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,8">
+                                            <TextBlock Text="垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalOffset_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="水平角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalRotation_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="垂直角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalRotation_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtArrayLabel_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddArrayTask_Lght" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加阵列任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                            
+                            <Border Style="{StaticResource CardBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="轮廓沿线放样" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectProfile_Lght" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择面/边轮廓" />
+                                        <Button x:Name="btnSelectProfileFamily_Lght" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从轮廓族获取" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtProfileInfo_Lght" Text="尚未选择放样轮廓。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="放样水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepHorizontalOffset_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="放样垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepVerticalOffset_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtSweepLabel_Lght" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddSweepTask_Lght" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加放样任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock Text="动照专业 (Lght) - 限界参考截面" Foreground="#FF5C6B78" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                            <Viewbox Margin="20,40,20,20" MaxHeight="520" Stretch="Uniform">
+                                <Canvas x:Name="canvasPreview_Lght" Width="800" Height="800" Background="#FFFDFEFF" ClipToBounds="True">
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+
+            <TabItem Header="强电专业 (StrPwr)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="构件阵列布置" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectFamily_StrPwr" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择族类型" />
+                                        <Button x:Name="btnPickPlacedFamily_StrPwr" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从实例取类型" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtFamilyInfo_StrPwr" Text="尚未选择族类型。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="布置间距 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSpacing_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="5000" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="布置数量 (空为自动)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtCount_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,8">
+                                            <TextBlock Text="水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalOffset_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,8">
+                                            <TextBlock Text="垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalOffset_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="水平角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalRotation_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="垂直角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalRotation_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtArrayLabel_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddArrayTask_StrPwr" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加阵列任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                            
+                            <Border Style="{StaticResource CardBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="轮廓沿线放样" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectProfile_StrPwr" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择面/边轮廓" />
+                                        <Button x:Name="btnSelectProfileFamily_StrPwr" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从轮廓族获取" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtProfileInfo_StrPwr" Text="尚未选择放样轮廓。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="放样水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepHorizontalOffset_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="放样垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepVerticalOffset_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtSweepLabel_StrPwr" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddSweepTask_StrPwr" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加放样任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock Text="强电专业 (StrPwr) - 限界参考截面" Foreground="#FF5C6B78" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                            <Viewbox Margin="20,40,20,20" MaxHeight="520" Stretch="Uniform">
+                                <Canvas x:Name="canvasPreview_StrPwr" Width="800" Height="800" Background="#FFFDFEFF" ClipToBounds="True">
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+
+            <TabItem Header="弱电专业 (WkPwr)">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,10,0">
+                            
+                            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="构件阵列布置" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectFamily_WkPwr" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择族类型" />
+                                        <Button x:Name="btnPickPlacedFamily_WkPwr" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从实例取类型" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtFamilyInfo_WkPwr" Text="尚未选择族类型。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="布置间距 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSpacing_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="5000" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="布置数量 (空为自动)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtCount_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,8">
+                                            <TextBlock Text="水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalOffset_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,8">
+                                            <TextBlock Text="垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalOffset_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="水平角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtHorizontalRotation_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="垂直角度 (deg)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtVerticalRotation_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtArrayLabel_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddArrayTask_WkPwr" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加阵列任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                            
+                            <Border Style="{StaticResource CardBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="轮廓沿线放样" Style="{StaticResource SectionTitleStyle}" />
+                                    <WrapPanel Margin="0,10,0,0">
+                                        <Button x:Name="btnSelectProfile_WkPwr" Width="122" Style="{StaticResource SecondaryButtonStyle}" Content="选择面/边轮廓" />
+                                        <Button x:Name="btnSelectProfileFamily_WkPwr" Width="150" Style="{StaticResource SecondaryButtonStyle}" Content="从轮廓族获取" />
+                                    </WrapPanel>
+                                    <Border Style="{StaticResource InfoPanelStyle}" Margin="0,2,0,0">
+                                        <TextBlock x:Name="txtProfileInfo_WkPwr" Text="尚未选择放样轮廓。" TextWrapping="Wrap" Foreground="#FF223648" />
+                                    </Border>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="放样水平偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepHorizontalOffset_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="放样垂直偏移 (mm)" Foreground="#FF223648" />
+                                            <TextBox x:Name="txtSweepVerticalOffset_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="0" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <TextBlock Text="任务标签 (可选)" Margin="0,10,0,0" Foreground="#FF223648" />
+                                    <TextBox x:Name="txtSweepLabel_WkPwr" Style="{StaticResource CompactTextBoxStyle}" Text="" />
+                                    <Button x:Name="btnAddSweepTask_WkPwr" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Content="添加放样任务到队列" />
+                                </StackPanel>
+                            </Border>
+        
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock Text="弱电专业 (WkPwr) - 限界参考截面" Foreground="#FF5C6B78" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                            <Viewbox Margin="20,40,20,20" MaxHeight="520" Stretch="Uniform">
+                                <Canvas x:Name="canvasPreview_WkPwr" Width="800" Height="800" Background="#FFFDFEFF" ClipToBounds="True">
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+    
+        </TabControl>
+
+        <Border Grid.Row="2"
+                Style="{StaticResource CardBorderStyle}"
+                Margin="0,16,0,0"
+                Padding="16,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="txtStatus"
+                           VerticalAlignment="Center"
+                           Text="就绪。"
+                           Foreground="#FF1B7D4C"
+                           TextWrapping="Wrap" />
+                <Button x:Name="btnBatchPlace"
+                        Grid.Column="1"
+                        Width="132"
+                        Height="34"
+                        Margin="12,0,8,0"
+                        Background="#FF1F8A5B"
+                        BorderBrush="#FF1F8A5B"
+                        Foreground="White"
+                        Content="批量生成" />
+                <Button x:Name="btnStepPlace"
+                        Grid.Column="2"
+                        Width="132"
+                        Height="34"
+                        Margin="0,0,10,0"
+                        Background="#FF1D5F8C"
+                        BorderBrush="#FF1D5F8C"
+                        Foreground="White"
+                        Content="单步生成" />
+                <Button x:Name="btnClose"
+                        Grid.Column="3"
+                        Width="90"
+                        Height="34"
+                        Background="#FFF6F9FC"
+                        BorderBrush="#FFD4DEE7"
+                        Foreground="#FF193245"
+                        Content="关闭" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

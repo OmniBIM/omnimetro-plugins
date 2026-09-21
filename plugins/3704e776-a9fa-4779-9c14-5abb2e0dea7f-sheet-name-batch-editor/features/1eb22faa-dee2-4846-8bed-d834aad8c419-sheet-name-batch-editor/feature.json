@@ -1,0 +1,22 @@
+{
+  "min_revit": 2018,
+  "entrypoint": "entrypoint.py",
+  "slug": "sheet-name-batch-editor",
+  "feature_id": "1eb22faa-dee2-4846-8bed-d834aad8c419",
+  "title": "图纸名称批量管理器",
+  "icon": "payload/icon.png",
+  "category": "出图管理",
+  "tags": [
+    "本地",
+    "通用",
+    "出图管理"
+  ],
+  "schema_version": 1,
+  "max_revit": 2030,
+  "permissions": [
+    "revit_api"
+  ],
+  "plugin_id": "3704e776-a9fa-4779-9c14-5abb2e0dea7f",
+  "description": "批量修改当前项目或所选图纸的名称，支持前缀/后缀/查找替换，执行前提供冲突与只读预检拦截。",
+  "discipline": "通用"
+}

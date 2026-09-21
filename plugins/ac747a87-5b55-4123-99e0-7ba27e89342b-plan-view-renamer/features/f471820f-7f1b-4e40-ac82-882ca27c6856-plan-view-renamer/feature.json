@@ -1,0 +1,22 @@
+{
+  "slug": "plan-view-renamer", 
+  "title": "平面视图名称批量编辑器", 
+  "feature_id": "f471820f-7f1b-4e40-ac82-882ca27c6856", 
+  "entrypoint": "entrypoint.py", 
+  "category": "参数管理", 
+  "discipline": "通用", 
+  "plugin_id": "ac747a87-5b55-4123-99e0-7ba27e89342b", 
+  "description": "列表显示所有平面视图，支持在表格中直接编辑新名称并批量改名，带冲突预检与事务回滚。", 
+  "icon": "payload/icon.png", 
+  "schema_version": 1, 
+  "max_revit": 2030, 
+  "tags": [
+    "本地", 
+    "通用", 
+    "参数管理"
+  ], 
+  "permissions": [
+    "revit_api"
+  ], 
+  "min_revit": 2018
+}

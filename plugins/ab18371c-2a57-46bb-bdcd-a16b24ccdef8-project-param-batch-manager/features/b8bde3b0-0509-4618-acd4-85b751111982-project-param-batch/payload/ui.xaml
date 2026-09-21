@@ -1,0 +1,151 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="项目参数批量管理器" Height="720" Width="1280"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource WindowBgBrush}">
+    <Window.Resources>
+        <SolidColorBrush x:Key="WindowBgBrush" Color="#F5F6F7"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="SurfaceAltBrush" Color="#F7FAFC"/>
+        <SolidColorBrush x:Key="TextBrush" Color="#1F2937"/>
+        <SolidColorBrush x:Key="MutedTextBrush" Color="#718096"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#E2E8F0"/>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#3182CE"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="#4A5568"/>
+        <SolidColorBrush x:Key="TertiaryBrush" Color="#718096"/>
+        <SolidColorBrush x:Key="ActionBrush" Color="#805AD5"/>
+        <SolidColorBrush x:Key="SuccessBrush" Color="#38A169"/>
+        <SolidColorBrush x:Key="RowSuccessBrush" Color="#E6FFFA"/>
+        <SolidColorBrush x:Key="RowErrorBrush" Color="#FFF5F5"/>
+        <SolidColorBrush x:Key="RowBusyBrush" Color="#EBF8FF"/>
+        <SolidColorBrush x:Key="MismatchBrush" Color="#FED7D7"/>
+        <SolidColorBrush x:Key="ReadonlyBrush" Color="#EDF2F7"/>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+            <Setter Property="RowBackground" Value="{DynamicResource SurfaceBrush}"/>
+            <Setter Property="AlternatingRowBackground" Value="{DynamicResource SurfaceAltBrush}"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{DynamicResource SurfaceAltBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="RowStyle" TargetType="DataGridRow">
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Status}" Value="已提取">
+                    <Setter Property="Background" Value="{DynamicResource RowSuccessBrush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="失败">
+                    <Setter Property="Background" Value="{DynamicResource RowErrorBrush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="提取中">
+                    <Setter Property="Background" Value="{DynamicResource RowBusyBrush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="修改中">
+                    <Setter Property="Background" Value="{DynamicResource RowBusyBrush}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="写入成功">
+                    <Setter Property="Background" Value="{DynamicResource RowSuccessBrush}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- 头部信息区 -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+            <TextBlock Text="项目参数批量管理器" FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+            <TextBlock Text="  v1.0.0  |  选择多个 Revit 文件，提取/新增/批量修改项目基点与项目参数" 
+                       Foreground="{DynamicResource MutedTextBrush}" FontSize="11" VerticalAlignment="Center" Margin="12,0,0,0"/>
+        </StackPanel>
+
+        <!-- 文件操作区 -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
+            <Button Content="选择 Revit 文件..." Click="SelectFiles_Click" Padding="14,5" Margin="0,0,8,0" Background="{DynamicResource PrimaryBrush}" Foreground="White" BorderThickness="0"/>
+            <Button Content="移除选中" Click="RemoveSelected_Click" Padding="14,5" Margin="0,0,8,0" Background="{DynamicResource TertiaryBrush}" Foreground="White" BorderThickness="0"/>
+            <Button Content="全选" Click="SelectAll_Click" Padding="14,5" Margin="0,0,8,0"/>
+            <Button Content="取消全选" Click="SelectNone_Click" Padding="14,5" Margin="0,0,16,0"/>
+            <TextBlock Text="* 修改操作会直接保存文件，请先关闭占用这些文件的 Revit 视图" 
+                       VerticalAlignment="Center" Foreground="{DynamicResource MutedTextBrush}" FontSize="11"/>
+        </StackPanel>
+
+        <!-- 数据表格 -->
+        <DataGrid x:Name="DataGridFiles" Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  SelectionMode="Extended"
+                  RowStyle="{StaticResource RowStyle}"
+                  Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                  AlternatingRowBackground="{DynamicResource SurfaceAltBrush}"
+                  HorizontalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="选择" Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                <DataGridTextColumn Header="文件名" Binding="{Binding FileName}" IsReadOnly="True" Width="180"/>
+                <DataGridTextColumn Header="状态" Binding="{Binding Status}" IsReadOnly="True" Width="80"/>
+                <DataGridTextColumn Header="基点 N/S (mm)" Binding="{Binding BaseNS, UpdateSourceTrigger=PropertyChanged}" Width="110"/>
+                <DataGridTextColumn Header="基点 E/W (mm)" Binding="{Binding BaseEW, UpdateSourceTrigger=PropertyChanged}" Width="110"/>
+                <DataGridTextColumn Header="基点 高程 (mm)" Binding="{Binding BaseElev, UpdateSourceTrigger=PropertyChanged}" Width="110"/>
+                <DataGridTextColumn Header="基点 角度 (度)" Binding="{Binding BaseAngle, UpdateSourceTrigger=PropertyChanged}" Width="110"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- 新增项目参数区 -->
+        <Border Grid.Row="3" Background="{DynamicResource SurfaceAltBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="4" Margin="0,8,0,0" Padding="10,8">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="新增项目参数:" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBlock Text="名称" VerticalAlignment="Center" Margin="0,0,4,0" Foreground="{DynamicResource MutedTextBrush}"/>
+                <TextBox x:Name="txtNewParamName" Width="180" Margin="0,0,12,0" VerticalContentAlignment="Center"/>
+                <TextBlock Text="类型" VerticalAlignment="Center" Margin="0,0,4,0" Foreground="{DynamicResource MutedTextBrush}"/>
+                <ComboBox x:Name="cmbNewParamType" Width="130" Margin="0,0,12,0" VerticalContentAlignment="Center"/>
+                <TextBlock Text="分组" VerticalAlignment="Center" Margin="0,0,4,0" Foreground="{DynamicResource MutedTextBrush}"/>
+                <ComboBox x:Name="cmbNewParamGroup" Width="110" Margin="0,0,12,0" VerticalContentAlignment="Center"/>
+                <Button Content="添加到所选文件" Click="AddParam_Click" Padding="14,5" Background="{DynamicResource ActionBrush}" Foreground="White" BorderThickness="0"/>
+                <TextBlock x:Name="txtAddParamStatus" VerticalAlignment="Center" Margin="12,0,0,0" Foreground="{DynamicResource MutedTextBrush}" FontSize="11"/>
+            </StackPanel>
+        </Border>
+
+        <!-- 底部操作与反馈区 -->
+        <Grid Grid.Row="4" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock x:Name="txtStatus" Foreground="{DynamicResource MutedTextBrush}" FontSize="11" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="提取所选数据" Click="ExtractData_Click" Padding="20,8" Margin="0,0,10,0" Background="{DynamicResource ActionBrush}" Foreground="White" BorderThickness="0"/>
+                <Button Content="重置为提取值" Click="ResetValues_Click" Padding="20,8" Margin="0,0,10,0"/>
+                <Button Content="批量写入所选文件" Click="RunBatch_Click" Padding="20,8" Background="{DynamicResource SuccessBrush}" Foreground="White" BorderThickness="0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

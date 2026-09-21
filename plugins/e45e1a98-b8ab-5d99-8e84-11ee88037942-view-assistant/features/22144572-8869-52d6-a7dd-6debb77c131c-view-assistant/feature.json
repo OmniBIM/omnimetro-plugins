@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "feature_id": "22144572-8869-52d6-a7dd-6debb77c131c",
+  "plugin_id": "e45e1a98-b8ab-5d99-8e84-11ee88037942",
+  "slug": "view-assistant",
+  "name": "view-assistant",
+  "title": "视图助手",
+  "description": "本地 pyRevit 视图工具。",
+  "discipline": "通用",
+  "category": "视图",
+  "capability_id": "revit.view.assistant",
+  "entrypoint": "entrypoint.py",
+  "icon": "payload/icon.png",
+  "min_revit": 2018,
+  "max_revit": 2030,
+  "tags": [
+    "出图",
+    "本地",
+    "管理",
+    "视图"
+  ],
+  "permissions": [
+    "revit_api"
+  ],
+  "evaluation": {
+    "benchmark_suite": "",
+    "benchmark_score": null
+  }
+}

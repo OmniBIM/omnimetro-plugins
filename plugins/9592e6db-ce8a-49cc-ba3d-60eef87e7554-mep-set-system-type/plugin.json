@@ -1,0 +1,47 @@
+{
+  "author": {
+    "organization": "",
+    "name": "OmniBIM",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "category": "参数管理",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "schema_version": 1,
+  "description": "批量将选中风管、管道、桥架/线管指定到 Revit 所属系统中，提供前置系统对比预览与冲突拦截。",
+  "license": "Proprietary",
+  "discipline": "机电",
+  "name": "机电图元所属系统批量指定工具",
+  "slug": "mep-set-system-type",
+  "files": {
+    "README.md": "1605d960e1e4289a325b565a6092cfb75e138c1e51389539a2d07922de22f734",
+    "plugin.json": "928a11a2f0b60f5e7070f7977d32ed864384eb5b25f6bc28da5f54f624b58494",
+    "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/entrypoint.py": "738d4609b92da7515afdf6c4d0b43ad4d861375b5b7de9a4176aa26e877f6c89",
+    "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/feature.json": "7804f6a73f6a065300253f9eb39e4baaa494361c181478d894298013950e259d",
+    "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/payload/bundle.yaml": "b01343205c5629a8c63c5698de23a24f703c642924bca5bb99a31960a842d562",
+    "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/payload/icon.png": "c8aa3fbb3a22dc496a0e8e6c7a8f0d04afeb66bc1b6c14c6674f8f44d3fe93e4",
+    "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/payload/script.py": "d6701a6e25f7e38f874e97e772571504d3c1f47a5b6408909ae7654413a4baa1"
+  },
+  "features": [
+    "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type"
+  ],
+  "dependencies": [],
+  "tags": [
+    "本地",
+    "机电",
+    "参数管理"
+  ],
+  "created_at": "2026-09-02",
+  "version": "1.0.4",
+  "updated_at": "2026-09-04",
+  "iteration_count": 0,
+  "plugin_id": "9592e6db-ce8a-49cc-ba3d-60eef87e7554",
+  "permissions": [
+    "revit_api"
+  ]
+}

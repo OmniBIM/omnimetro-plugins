@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "feature_id": "812df668-e7dd-573e-975b-916f81584ba4",
+  "plugin_id": "b4e1e15a-77ab-5784-bd07-d3272fa66a3b",
+  "slug": "name-batch-replace",
+  "name": "name-batch-replace",
+  "title": "名称批量替换",
+  "description": "批量替换当前模型中的族名称和用户工作集名称。",
+  "discipline": "通用",
+  "category": "协同",
+  "capability_id": "revit.name.batch-replace",
+  "entrypoint": "entrypoint.py",
+  "icon": "",
+  "min_revit": 2018,
+  "max_revit": 2030,
+  "tags": [
+    "本地",
+    "协同",
+    "族管理",
+    "工作集"
+  ],
+  "permissions": [
+    "revit_api"
+  ],
+  "evaluation": {
+    "benchmark_suite": "",
+    "benchmark_score": null
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "plugin_id": "b4e1e15a-77ab-5784-bd07-d3272fa66a3b",
+  "slug": "name-batch-replace",
+  "name": "名称批量替换",
+  "description": "批量替换当前模型中的族名称和用户工作集名称。",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "discipline": "通用",
+  "category": "协同",
+  "tags": [
+    "本地",
+    "协同",
+    "族管理",
+    "工作集"
+  ],
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "version": "1.0.0",
+  "license": "Proprietary",
+  "features": [
+    "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "revit_api"
+  ],
+  "created_at": "2026-08-21",
+  "updated_at": "2026-08-21",
+  "migration": {
+    "source": "TKbox/TKbox.extension/TKbox.tab/协同工具.panel/名称批量替换.pushbutton",
+    "strategy": "embedded-payload"
+  },
+  "files": {
+    "README.md": "75f03dbbc5feaaa577e8db1a6a4b54a94105a5425eb961202c5cec0815ae40e4",
+    "plugin.json": "cbe435c0f3e1330516dd2d1f58112db7522d7b7023394cce6cb66ffd143ccfed",
+    "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+    "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/feature.json": "183e7528239ed968bc56905f7081bdf3a4fb1cb6c9cd08fd0b625585181f44bf",
+    "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/payload/bundle.yaml": "61c84bb51b4fefdca9197ea6d245f20edea9f2dcf4ad2ea6931e1a9d51475977",
+    "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/payload/script.py": "0662469c3af894e89cd92119b24d95be1070875c6be43c62c5d741c10a9e9d97",
+    "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/payload/ui.xaml": "b56ae73dc0bce5ef8e2aee9bea9c81f7bc41de5eb5aeae3225506b142dc5b806"
+  },
+  "iteration_count": 0
+}

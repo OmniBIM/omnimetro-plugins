@@ -1,0 +1,8 @@
+title: Revit跨版本模型降级与迁移平台
+tooltip: 基于 neutral .rvtmig 规范与五级降级体系，支持 Revit 2027/2024 模型静态扫描、能力评估与 2020/2018 原生高保真重建。
+author: "OmniBIM"
+discipline: 通用
+category: 协同
+tags: 本地,协同,Revit降级,跨版本,中间文件,高保真
+load_group: 核心工具
+version: 1.0.0

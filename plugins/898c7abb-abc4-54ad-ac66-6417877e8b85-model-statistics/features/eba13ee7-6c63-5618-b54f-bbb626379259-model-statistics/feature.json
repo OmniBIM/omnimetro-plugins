@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "feature_id": "eba13ee7-6c63-5618-b54f-bbb626379259",
+  "plugin_id": "898c7abb-abc4-54ad-ac66-6417877e8b85",
+  "slug": "model-statistics",
+  "name": "model-statistics",
+  "title": "模型统计",
+  "description": "按范围筛选指定族/类型并统计族实例数量，同时支持导出全部图纸名称为 XLSX。",
+  "discipline": "通用",
+  "category": "协同",
+  "capability_id": "revit.model.statistics",
+  "entrypoint": "entrypoint.py",
+  "icon": "",
+  "min_revit": 2018,
+  "max_revit": 2030,
+  "tags": [
+    "本地",
+    "协同",
+    "模型统计",
+    "电缆桥架",
+    "图纸"
+  ],
+  "permissions": [
+    "revit_api"
+  ],
+  "evaluation": {
+    "benchmark_suite": "",
+    "benchmark_score": null
+  }
+}

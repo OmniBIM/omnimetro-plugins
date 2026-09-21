@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "feature_id": "b8bde3b0-0509-4618-acd4-85b751111982",
+  "plugin_id": "ab18371c-2a57-46bb-bdcd-a16b24ccdef8",
+  "slug": "project-param-batch",
+  "name": "project-param-batch",
+  "title": "项目参数批量管理器",
+  "description": "选择多个 Revit 文件，自动提取项目基点与全部项目参数（内置 + 项目/共享参数），支持新增项目参数并批量修改所有项目参数。",
+  "discipline": "通用",
+  "category": "协同",
+  "capability_id": "revit.project-param.batch-manager",
+  "entrypoint": "entrypoint.py",
+  "icon": "payload/icon.png",
+  "min_revit": 2018,
+  "max_revit": 2030,
+  "tags": [
+    "协同",
+    "项目参数",
+    "项目基点",
+    "批量",
+    "多文件",
+    "本地"
+  ],
+  "permissions": [
+    "revit_api"
+  ],
+  "evaluation": {
+    "benchmark_suite": "",
+    "benchmark_score": null
+  }
+}

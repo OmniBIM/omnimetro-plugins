@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "plugin_id": "86cf9a91-441b-5913-bf4f-9993b5de1f6f",
+  "slug": "base-point-manager",
+  "name": "项目基点批量管理器",
+  "description": "批量提取和修改多个 Revit 文件的项目基点数据。",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "discipline": "通用",
+  "category": "协同",
+  "tags": [
+    "协同",
+    "坐标",
+    "批量",
+    "本地"
+  ],
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "version": "1.0.0",
+  "license": "Proprietary",
+  "features": [
+    "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "revit_api"
+  ],
+  "created_at": "2026-08-21",
+  "updated_at": "2026-08-21",
+  "migration": {
+    "source": "Revitbasepoint/Revitbasepoint.extension/Revitbasepoint.tab/Tools.panel/BasePointManager.pushbutton",
+    "strategy": "embedded-payload"
+  },
+  "files": {
+    "README.md": "f108d0049d5930e70802bc862f8684098108b20d04cba0d0045c1a2548174823",
+    "plugin.json": "fb8e40670c7e5180733282c15075d76eedd894c12f31fa543065cc3ec2d2b5b2",
+    "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+    "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/feature.json": "cb354f0af40ff19ee61324bc6c762b6b6a509ad6c0b3601b0e53d93035c831bd",
+    "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/payload/bundle.yaml": "8c6db8065f9eb8f2a3fa60196fc2fb7d823ae6bd1c7a467f0bd9c864ca892838",
+    "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/payload/icon.png": "00eadd189fb9c75ec6c5b2fb19168bb23f1caee25b40c5312326be0262ee9524",
+    "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/payload/script.py": "b0de0ac05d917b559362752b2113b8d801f76cb6a18a9432745b2a0378cef120",
+    "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/payload/ui.xaml": "21ccfa7d080881f6e6afcfe20c0f0c47127e6bc19a9ad5042da5ea6a2c51e8c8"
+  },
+  "iteration_count": 0
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "plugin_id": "35e5c7f3-4b92-52d8-b52f-6ec3a1f37852",
+  "slug": "sheet-batch-manager",
+  "name": "批量图纸管理",
+  "description": "批量维护图纸名称、图纸编号及图纸实例参数；可从一张源图纸复制所选属性到多张图纸。",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "discipline": "通用",
+  "category": "协同",
+  "tags": [
+    "本地",
+    "协同",
+    "图纸",
+    "出图",
+    "参数管理"
+  ],
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "version": "1.2.0",
+  "license": "Proprietary",
+  "features": [
+    "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "revit_api"
+  ],
+  "created_at": "2026-08-21",
+  "updated_at": "2026-08-21",
+  "migration": {
+    "source": "TKbox/TKbox.extension/TKbox.tab/协同工具.panel/批量图纸管理.pushbutton",
+    "strategy": "embedded-payload"
+  },
+  "files": {
+    "README.md": "b5be11859051667419ccf3148c713875b5d5f18606d8c288b1fdc9f02c6ae5b8",
+    "plugin.json": "d7dca62d690094f432cbbdb2957e355b876db42f18a9677ef4b71640bc4d212f",
+    "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+    "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/feature.json": "66de9662d2fa50073caff4b4a0cbe20ef99c2884ea2e95e128b44684e38f13e9",
+    "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/payload/bundle.yaml": "1a62740f8d7c35d28c6fc3a67b0c792c3f96a3380cab340c4e93e8fa6bb1ac7c",
+    "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/payload/script.py": "dadc0c72448574a72c417d3bef32a4d383358e782b85558dbec056930923b973",
+    "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/payload/ui.xaml": "ea1556177f24ffd9047dc93ff604d2dc256dbc38c511d42bf59fc7f303eb0d10"
+  },
+  "iteration_count": 0
+}

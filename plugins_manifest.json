@@ -1,0 +1,534 @@
+{
+  "schema_version": 1,
+  "repo": "OmniBIM/omnimetro-plugins",
+  "description": "OmniMetro BIM 智能协同平台官方插件市场资产清单",
+  "author": "OmniBIM",
+  "total_plugins": 15,
+  "plugins": [
+    {
+      "plugin_id": "0cbbfadf-573d-529f-b645-f12c1a6c8efb",
+      "slug": "revit-downgrade",
+      "name": "Revit跨版本模型降级与迁移平台",
+      "version": "1.0.0",
+      "description": "基于 neutral .rvtmig 规范与五级降级体系，支持 Revit 2027/2024 模型静态扫描、能力评估与 2020/2018 原生高保真重建。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "协同",
+      "tags": [
+        "本地",
+        "协同",
+        "Revit降级",
+        "跨版本",
+        "中间文件",
+        "高保真"
+      ],
+      "dir_name": "0cbbfadf-573d-529f-b645-f12c1a6c8efb-revit-downgrade",
+      "files": {
+        "README.md": "e2c9a3d734e8344922fc13d92788364e6d95ee712dfc044e05af7a86364b0190",
+        "plugin.json": "f40afe5d868c1ffd0a7a95b4ae106aca325e80507f4898cfc829b44620f41c43",
+        "features/92e3ea5d-bdf2-53fa-becb-5a72bb53026e-revit-downgrade/entrypoint.py": "eaf0b1193384cf8c59ad82b5ab18bfd3ad1603af65333f2fec6ae660c014c844",
+        "features/92e3ea5d-bdf2-53fa-becb-5a72bb53026e-revit-downgrade/feature.json": "a274849626c4265f5a7d312323263187920d81f95a0a804910483a399217d5e0",
+        "features/92e3ea5d-bdf2-53fa-becb-5a72bb53026e-revit-downgrade/payload/bundle.yaml": "bb96bfa2e536baa8e4d5091a28464698e39d8032a0d89dac0f9ecb69a09f2288",
+        "features/92e3ea5d-bdf2-53fa-becb-5a72bb53026e-revit-downgrade/payload/script.py": "165f548fe57522339590fe93878414f7243c7a0cd41ab81dea47abbd984ba10a",
+        "lib/migrator_core/__init__.py": "6b2baa3b211b4c524f1b5808f95d48969619c2e288e4d2bf476b9cf857c8eb88",
+        "lib/migrator_core/config.py": "fa0207ebf637e930e4f7543199e8cf52e47e75d7a5377e95e3fcaacbdcaeb010",
+        "lib/migrator_core/constants.py": "14adc36c5644910f2968a274f824f8fd735b3562d7484c0377774b177367f23a",
+        "lib/migrator_core/exceptions.py": "62999dd6c276d36fd07fbf44d5a7589cb34008441c66393be1760690542da44b",
+        "lib/migrator_core/importer_engine.py": "0f68465aebab173a5b87b3882aa0d0913271ea2b970ec0eafe144b5178fc8cb5",
+        "lib/migrator_core/analyzers/__init__.py": "56f85b9bf3036269f79f657aa4eaff7783d23cec4ddb82ade974c0e661339de3",
+        "lib/migrator_core/analyzers/capability_analyzer.py": "7c04e1578ce82d6c783f1ccd6958f13e71296f813d2b4030784b94a47057aa1e",
+        "lib/migrator_core/analyzers/dependency_analyzer.py": "135b509b442cd0e61bf63e80bc5cf6f3872dc6b60d420da461bdde6048019d28",
+        "lib/migrator_core/compat/__init__.py": "5369a518796c4f2ef66ea5086fa2e4709c93c753ea0002cb6abc0b8e03391eae",
+        "lib/migrator_core/compat/db_compat.py": "60c58d853b698338225d73643b3098b95a4416ce3b51e71d221f00d82c7b609e",
+        "lib/migrator_core/compat/revit_compat.py": "c24b6ff8c5d792ad744cf74d7d02eeae47ebdcce2d248f0a71fa6b2ca6ae55a4",
+        "lib/migrator_core/compat/unit_utils.py": "02734421db45f8e257d557b5f9753c677ec57903a0f06a6bd48f3f6b256fc702",
+        "lib/migrator_core/converters/__init__.py": "04f161b2ecc13a9c821bac3e300b830d94f9bcda72d0034e111f28e101ef8381",
+        "lib/migrator_core/converters/base_converter.py": "6edc0dca2d343e066d415f957fe9018a1fb05470a0c403cf50d2802aa17b66ac",
+        "lib/migrator_core/converters/directshape_converter.py": "aed58c04810fb7c7ad1211d7b0b326d2d6ae1b751ff3f54d086bb014a300aeae",
+        "lib/migrator_core/converters/door_converter.py": "f3f7d90ff544019ee544010b1033fc5932ad4a604e8c031df557c8e389804c2c",
+        "lib/migrator_core/converters/family_instance_converter.py": "6be05224041c368e8be3ac24f9774fedf10906515aab33beeb5d2f64578d618f",
+        "lib/migrator_core/converters/floor_converter.py": "94ac2d634b2fab1e4c152e32e3da9397e5175bb6a5c46420058caf93230159c1",
+        "lib/migrator_core/converters/grid_converter.py": "32c57b3903725b34f03b01ad9b1a8de731e4a72f37609231b714d4a6b50279ba",
+        "lib/migrator_core/converters/level_converter.py": "fa8bc068fa0e7bee2fab9d35abd8a5695903c7903d9057b9d760d3185044f3aa",
+        "lib/migrator_core/converters/material_converter.py": "ed1ba05d1524064f31d7fcd1c1104af4720c46c270290cc25cba5001f64907ec",
+        "lib/migrator_core/converters/mep_converter.py": "6a989b8056350c5b4da2b6376bf3d753e93d8706ea1662c4b1566e198e91459a",
+        "lib/migrator_core/converters/registry.py": "5cc1ec0bb548f376f596e811c0e685fabed9fe9679c3fbdaaf91c7db25affc1d",
+        "lib/migrator_core/converters/view_converter.py": "0ae5b99b9f2324fd425ff716cabd48a5f34ed8271622ec539f365ed3544479e5",
+        "lib/migrator_core/converters/wall_converter.py": "3a31e0e98236cc32075095233744a21a7063ab7f2e7e875f53933aca80bee6b2",
+        "lib/migrator_core/converters/window_converter.py": "113f020be4e284c5a8815952bf1ad9e0bdcd64db3b306c5d3bee11e7f33cc213",
+        "lib/migrator_core/family/__init__.py": "a4da663ae4ac7bad82994e16bff3710e9d4456b688f717975d2694b01e560f38",
+        "lib/migrator_core/family/family_geometry_fallback.py": "10037e291a04a99df3191bc87581d83c43c6c7d928ba6710dd9ca865a1e7edbc",
+        "lib/migrator_core/family/family_rebuilder.py": "b9cfc915e6407bf921a59e4ba49d4879c8cbad2406151a6312b00bf70141c79c",
+        "lib/migrator_core/family/family_recipe.py": "11e6fc42e53bb337ff3b4c9e5dd536e7c21ef54f8a543546f3507fb4adcd7fb4",
+        "lib/migrator_core/geometry/__init__.py": "8423bc14a1a0caeb3e6ae4f51b2169bcd5d4094e329a316baea4ecc53445b813",
+        "lib/migrator_core/geometry/sat_exporter.py": "aea9d1244ef200516b28d3d7c88196630611ac21c7db89d598f219461f0b8af2",
+        "lib/migrator_core/geometry/sat_importer.py": "1c1758c11e387104550471dac9f1da26e3cc8e03c7f27bcca2db0fa201acb1c7",
+        "lib/migrator_core/geometry/tessellation.py": "604f1d4b3576cfb47fabdf349d923e464d5cc6ac31b222b7ee7db31efd7ed9f4",
+        "lib/migrator_core/infra/__init__.py": "80c578fcc27356e36f424f035a02481862518f4976811f368c752686290ff983",
+        "lib/migrator_core/infra/batching.py": "1ce64b506e00964ab220fcf4b8d74614934111c587cba3b75d818e21022861f7",
+        "lib/migrator_core/infra/cancellation.py": "0114d9dec4cd7b31c35704a33e28bd1328541f22a7effa14a7c913263c6c6ca0",
+        "lib/migrator_core/infra/extensible_storage.py": "654115cad64fa804191b5b82292ae09ded8f0e033f847e0ae0deb7e6cf2f6155",
+        "lib/migrator_core/infra/journal.py": "1324ba99a549072155080c78d7c052357b4508908694501c2c85aa6ecbe7f9c8",
+        "lib/migrator_core/infra/logger.py": "8c8813b9e230dcecf523eede1d1f16b56b1028353f9d5e9dc53e0c88836df0dd",
+        "lib/migrator_core/models/__init__.py": "b8b890903e89444dcebc17949f0d865cb256df09769491e0a69d57b7a513c001",
+        "lib/migrator_core/models/element_record.py": "ab0c373a4110f0acd83c7db07c9732bc9f452e44794ad24f7c9d3118f52a698d",
+        "lib/migrator_core/models/family_record.py": "df78252d41628f5c9b8aa29d506ea108e7aefe0b90da60282aab037b0c49cd99",
+        "lib/migrator_core/models/material_record.py": "4b1aa4e2bcf782d9e0d38b7eaed891ad4e5e674db8ce61682f0c8c108f29fb0c",
+        "lib/migrator_core/models/migration_model.py": "62fe219ab5008dcf422ed2cb3a2bc20c18d933b3a42d7d92cf56168640c06ddd",
+        "lib/migrator_core/models/parameter_record.py": "158d8b0452b50365f3cdf8b6c87b43b0a4c084a5565e22d556986ad4da223e46",
+        "lib/migrator_core/package/__init__.py": "fd282d3f8df83b6326aec18ed9172a7389cbe936265b328ffd81a93df92cc94e",
+        "lib/migrator_core/package/checksum.py": "dd38a27fbacbff1eb49aeea436839a424504b519ec5b0ef0f5ee6c4a0f69f8af",
+        "lib/migrator_core/package/manifest.py": "bab0a587fe20dde76d0c1ea64ee51a74ffb16eebd946a964f696650f39fea0f8",
+        "lib/migrator_core/package/package_reader.py": "4647b2aabcdb8591662e42dec3a0a59b021448e13009638c80c6f0c64b4edf65",
+        "lib/migrator_core/package/package_writer.py": "2740ae68bc0dff88128de6ee318e2af78ddb002d7c22afafcd761b6658ecd2d0",
+        "lib/migrator_core/package/sqlite_schema.py": "9d50d7eb040944660162e22cd89890d9bebb5a97e4638fa050c6be87eb04bce3",
+        "lib/migrator_core/scanner/__init__.py": "e58e7086bc0b77b7726ca872afb8764f36835aadf310116abbc80c0f1fd097cc",
+        "lib/migrator_core/scanner/element_scanner.py": "8c590bc5175ba393a7746fcf62edc623f9e03bf629f5587e757b9610eea5e27f",
+        "lib/migrator_core/scanner/family_scanner.py": "84c1ecb692dd075f0ea133ae1c66c8df5261ea561f84451a8062ce061ce5bd8a",
+        "lib/migrator_core/scanner/geometry_scanner.py": "ff3fe93e94489eb88b387e9a7f6c67ab29fad7230be9007a60e74ee69f8e10ac",
+        "lib/migrator_core/scanner/material_scanner.py": "dfb001b61d16d31ee3d1a9fe60e40f09d0ea45a2c68220e6c2d6c15af3b3c1ed",
+        "lib/migrator_core/scanner/project_scanner.py": "787f41c8675b9c40d2f7a47a3c1515d7ca163e1d7e357125fa40a053eef03f4c",
+        "lib/migrator_core/scanner/view_scanner.py": "9eb4a81bdd93ced2a6fe5b127300e1cfeec78ae62db4351a4c8bc841ba6a571e",
+        "lib/migrator_core/ui/__init__.py": "39c742dbed30e90dfce77f7b76896daa0f1d3269d2d7917c4b82b883a669667f",
+        "lib/migrator_core/ui/main_window.py": "1b03fd5120830dcf621780406f744b897c7b0917197cb7afa174bb3b50044957",
+        "lib/migrator_core/ui/main_window.xaml": "ba24e95fb2870eab1540b2a9c544f90bba7987bfc3cfe458e34fc405780a414b",
+        "lib/migrator_core/ui/progress.py": "7220123329b853379d83d35ceccf995455a2cad8cfec02a415ab853b6668b627",
+        "lib/migrator_core/ui/scan_progress_window.py": "055488de97244c97cfe83bd49b817dc87a929d334e2d191150e2c2e74cc67c23",
+        "lib/migrator_core/ui/scan_progress_window.xaml": "ad28d9be3a18edeb24d657fa4597e1fd3d5f57bcb9940810347560b696f95d81",
+        "lib/migrator_core/validation/__init__.py": "c4ef2c1ce09396f2c2ae00cbf578f227af02c9f68f9d451cc5a7806172362b34",
+        "lib/migrator_core/validation/report_generator.py": "da7f018e8d9512cbd2254658967c767e8c3486fdf8c176e6b861c18d8f896f9a",
+        "lib/migrator_core/validation/validator.py": "6ef4edd7fd9ba383be7780b76392c1230c98ad1758f66783650461a35cc9fe67"
+      },
+      "features": [
+        "features/92e3ea5d-bdf2-53fa-becb-5a72bb53026e-revit-downgrade"
+      ]
+    },
+    {
+      "plugin_id": "35146ddb-0b87-5185-b359-4f4babae60c1",
+      "slug": "mark-batch-fill",
+      "name": "Mark编码批量填写",
+      "version": "1.0.0",
+      "description": "按房间、类型和流水号规则批量填写族实例参数编码。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "协同",
+      "tags": [
+        "本地",
+        "协同",
+        "参数",
+        "编码",
+        "房间"
+      ],
+      "dir_name": "35146ddb-0b87-5185-b359-4f4babae60c1-mark-batch-fill",
+      "files": {
+        "README.md": "eb84688cb00763a7641f9b0463f550c7ab1a9d36a31b4f9275f9f1272819fe97",
+        "plugin.json": "adc099f472809f0e094aad56b3a4ceef0fefdab1265c5bfd531ec6f4c5902f01",
+        "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/entrypoint.py": "738d4609b92da7515afdf6c4d0b43ad4d861375b5b7de9a4176aa26e877f6c89",
+        "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/feature.json": "67b7bad9e3ce190d8cd5b59bf0f40d556a7063879391e9339a06de20a01383f7",
+        "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/payload/bundle.yaml": "774754ae34cf2d0ae5cbf594ccc002109e4ee0d5cc40484028237a7caa126db7",
+        "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/payload/script.py": "9494714407ede26a97efb459393ab9a4517637d69de95acffd1650d915287836",
+        "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/payload/selection_options.xaml": "4054cfd4498e93ac2c10dd03cb19e010cdc9e68aaf7f2eb190defb2f702fd57e",
+        "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/payload/ui.xaml": "f9f7e0473b94772f2a873e9a90631c364bd4bed90fe8ada744b2d43bfa2f5e22"
+      },
+      "features": [
+        "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill"
+      ]
+    },
+    {
+      "plugin_id": "35e5c7f3-4b92-52d8-b52f-6ec3a1f37852",
+      "slug": "sheet-batch-manager",
+      "name": "批量图纸管理",
+      "version": "1.2.0",
+      "description": "批量维护图纸名称、图纸编号及图纸实例参数；可从一张源图纸复制所选属性到多张图纸。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "协同",
+      "tags": [
+        "本地",
+        "协同",
+        "图纸",
+        "出图",
+        "参数管理"
+      ],
+      "dir_name": "35e5c7f3-4b92-52d8-b52f-6ec3a1f37852-sheet-batch-manager",
+      "files": {
+        "README.md": "b5be11859051667419ccf3148c713875b5d5f18606d8c288b1fdc9f02c6ae5b8",
+        "plugin.json": "d7dca62d690094f432cbbdb2957e355b876db42f18a9677ef4b71640bc4d212f",
+        "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+        "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/feature.json": "66de9662d2fa50073caff4b4a0cbe20ef99c2884ea2e95e128b44684e38f13e9",
+        "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/payload/bundle.yaml": "1a62740f8d7c35d28c6fc3a67b0c792c3f96a3380cab340c4e93e8fa6bb1ac7c",
+        "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/payload/script.py": "dadc0c72448574a72c417d3bef32a4d383358e782b85558dbec056930923b973",
+        "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager/payload/ui.xaml": "ea1556177f24ffd9047dc93ff604d2dc256dbc38c511d42bf59fc7f303eb0d10"
+      },
+      "features": [
+        "features/055c9d17-0073-541f-8c25-2a6e61a993be-sheet-batch-manager"
+      ]
+    },
+    {
+      "plugin_id": "3704e776-a9fa-4779-9c14-5abb2e0dea7f",
+      "slug": "sheet-name-batch-editor",
+      "name": "图纸名称批量管理器",
+      "version": "1.0.0",
+      "description": "批量修改当前项目或所选图纸的名称，支持前缀/后缀/查找替换，执行前提供冲突与只读预检拦截。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "出图管理",
+      "tags": [
+        "本地",
+        "通用",
+        "出图管理"
+      ],
+      "dir_name": "3704e776-a9fa-4779-9c14-5abb2e0dea7f-sheet-name-batch-editor",
+      "files": {
+        "README.md": "d36b6f5833b452d7ececc52b98f03ec23e130d450a213a86ba44595cbd5892f2",
+        "plugin.json": "7717bdbd3feb0a76400a4c6df49ca7efa9775e8b047567fb8672ece6709d64c5",
+        "features/1eb22faa-dee2-4846-8bed-d834aad8c419-sheet-name-batch-editor/entrypoint.py": "738d4609b92da7515afdf6c4d0b43ad4d861375b5b7de9a4176aa26e877f6c89",
+        "features/1eb22faa-dee2-4846-8bed-d834aad8c419-sheet-name-batch-editor/feature.json": "f18577da86ea8531fbd408e4777ac0fab1caee8f9b09a67829110d772c26ee55",
+        "features/1eb22faa-dee2-4846-8bed-d834aad8c419-sheet-name-batch-editor/payload/bundle.yaml": "914f529ac2c236f2b18754768daa796ba9eb5ce953af679f8e9ed9fe37865430",
+        "features/1eb22faa-dee2-4846-8bed-d834aad8c419-sheet-name-batch-editor/payload/icon.png": "c8aa3fbb3a22dc496a0e8e6c7a8f0d04afeb66bc1b6c14c6674f8f44d3fe93e4",
+        "features/1eb22faa-dee2-4846-8bed-d834aad8c419-sheet-name-batch-editor/payload/script.py": "999bbb3b3fcbf1a377e87341c334c85df03b065ee1559a42dff710c8d6adfc71"
+      },
+      "features": [
+        "features/1eb22faa-dee2-4846-8bed-d834aad8c419-sheet-name-batch-editor"
+      ]
+    },
+    {
+      "plugin_id": "6a4a3d85-3c8e-452f-897e-0d1a015dba71",
+      "slug": "family-instance-type-count-dashboard",
+      "name": "族实例数量统计浏览器",
+      "version": "1.0.2",
+      "description": "统计当前 Revit 模型中族实例数量，并按 类别 -> 族 -> 族类型 分层浏览，支持筛选、搜索与 Revit 联动选择。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "建模",
+      "tags": [
+        "本地",
+        "通用",
+        "建模"
+      ],
+      "dir_name": "6a4a3d85-3c8e-452f-897e-0d1a015dba71-family-instance-type-count-dashboard",
+      "files": {
+        ".omni_history.json": "c8206cc5cd6293410f2cb60af0f8c4a2bea6ba2870c64d6cfce42ab8d57f22b7",
+        "README.md": "65fd93601f2ebdbad5ae23513a47ad483226cd205f3ab94548d92fecfa2d648a",
+        "plugin.json": "74613e4e9b9daff5fa8a5d1414ab016f1657a0a7ee1b61e2bf5af9ee24f7b90b",
+        "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/entrypoint.py": "738d4609b92da7515afdf6c4d0b43ad4d861375b5b7de9a4176aa26e877f6c89",
+        "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/feature.json": "dbf9b57eaf7ba819abc0917441de7b9dec177ec269485508cf3bcd072e6945a3",
+        "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/payload/bundle.yaml": "728536c280b91457ffdd062af69cabf15ceb4d1295dbaa7910e6f17d00942dd9",
+        "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/payload/icon.png": "c8aa3fbb3a22dc496a0e8e6c7a8f0d04afeb66bc1b6c14c6674f8f44d3fe93e4",
+        "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/payload/script.py": "5d49bf17b7e58fae5faa3a961e44644f1084172ac2a38baa9e0e94209eb9d70d"
+      },
+      "features": [
+        "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard"
+      ]
+    },
+    {
+      "plugin_id": "86cf9a91-441b-5913-bf4f-9993b5de1f6f",
+      "slug": "base-point-manager",
+      "name": "项目基点批量管理器",
+      "version": "1.0.0",
+      "description": "批量提取和修改多个 Revit 文件的项目基点数据。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "协同",
+      "tags": [
+        "协同",
+        "坐标",
+        "批量",
+        "本地"
+      ],
+      "dir_name": "86cf9a91-441b-5913-bf4f-9993b5de1f6f-base-point-manager",
+      "files": {
+        "README.md": "f108d0049d5930e70802bc862f8684098108b20d04cba0d0045c1a2548174823",
+        "plugin.json": "fb8e40670c7e5180733282c15075d76eedd894c12f31fa543065cc3ec2d2b5b2",
+        "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+        "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/feature.json": "cb354f0af40ff19ee61324bc6c762b6b6a509ad6c0b3601b0e53d93035c831bd",
+        "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/payload/bundle.yaml": "8c6db8065f9eb8f2a3fa60196fc2fb7d823ae6bd1c7a467f0bd9c864ca892838",
+        "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/payload/icon.png": "00eadd189fb9c75ec6c5b2fb19168bb23f1caee25b40c5312326be0262ee9524",
+        "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/payload/script.py": "b0de0ac05d917b559362752b2113b8d801f76cb6a18a9432745b2a0378cef120",
+        "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager/payload/ui.xaml": "21ccfa7d080881f6e6afcfe20c0f0c47127e6bc19a9ad5042da5ea6a2c51e8c8"
+      },
+      "features": [
+        "features/49c1f82b-f32c-5d11-995b-60f39be5bd5d-base-point-manager"
+      ]
+    },
+    {
+      "plugin_id": "89071043-6416-5f63-9af9-fc4f2ec28e40",
+      "slug": "liner-master-along-curve",
+      "name": "区间自动建模",
+      "version": "1.0.0",
+      "description": "LinerMaster - 地铁区间全专业自动化建模平台。支持族沿线阵列布置与轮廓沿线放样。",
+      "author": "OmniBIM",
+      "discipline": "线规",
+      "category": "建模",
+      "tags": [
+        "地铁",
+        "建模",
+        "本地",
+        "线路"
+      ],
+      "dir_name": "89071043-6416-5f63-9af9-fc4f2ec28e40-liner-master-along-curve",
+      "files": {
+        "README.md": "4803aef1df8484598b677a68678086075216cc44e866677a2c0697a9b5b50cdc",
+        "plugin.json": "3bd0af8dd573d9cba494e351c91df012be08f338a54101e967636bfd4b01c979",
+        "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+        "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/feature.json": "cb84038ae7fe078df5f39ab630d8084af05979f17ee95111f652b26e689e5df9",
+        "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/payload/bundle.yaml": "3862e2bc940739f69108263d0a7fbb4cf08c982dcba9f19c98df8b5f983643fe",
+        "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/payload/icon.png": "3a4156256c340a6802439b59d09085d2147812da862805bc519cd5f44a3acb06",
+        "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/payload/script.py": "f66758f2d0c455921dc973634e260771899afe2a4ffefae43b4e003778c7786f",
+        "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve/payload/ui.xaml": "002ae47dfb196b901d31bf1f6397f48008a120e1dfd4f4164b8a7752faf16cfd",
+        "vendor/liner_master/__init__.py": "33d8f536e7b1b265d13b43bf2cb44dacb17b7c47cf007588c66f74842ea05772",
+        "vendor/liner_master/alignment.py": "cb52c06ba449ccfd551a27527838f714b3a9824192fb96b3650eac8ed91feca4",
+        "vendor/liner_master/core.py": "b1f365f6e48649c2c0bdf8c0e59ac76f1dfbbcb3c62795ba0aa608aedcea4cab",
+        "vendor/liner_master/db.py": "1de9f1c3322578303363ab1906a52065ba06df51143f263a91234b0558166b12"
+      },
+      "features": [
+        "features/0e4dd0e5-621f-5b52-a791-468860b7ffba-liner-master-along-curve"
+      ]
+    },
+    {
+      "plugin_id": "898c7abb-abc4-54ad-ac66-6417877e8b85",
+      "slug": "model-statistics",
+      "name": "模型统计",
+      "version": "1.2.0",
+      "description": "按范围筛选指定族/类型，统计族实例数量，并将全部图纸编号与名称导出为 XLSX。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "协同",
+      "tags": [
+        "本地",
+        "协同",
+        "模型统计",
+        "电缆桥架",
+        "图纸"
+      ],
+      "dir_name": "898c7abb-abc4-54ad-ac66-6417877e8b85-model-statistics",
+      "files": {
+        "README.md": "0e20ec3b55df5b6e6e1d5629402837542d3567a5200d55f7c4ce6b3d9acbc2df",
+        "plugin.json": "4c9b630ec6ef9697e32bfed39a963f97435c17c29fec902125d4fb03dbdf7ec9",
+        "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+        "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/feature.json": "a39fc8153a8d216226edb73274067465f96111615ebeb5ea18f567a0a3eedb82",
+        "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/payload/bundle.yaml": "5c3503c58bde3bc98071beedd8e4fff95d1a762c24059ad6ca31f6d313b570b8",
+        "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/payload/script.py": "31e4228f51c7069b6934de91b450bad4c464c1edcd2dcc5cb8f4329d4db4f269",
+        "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics/payload/ui.xaml": "6f259742bc20b333a795545070e52064903dfa2d706002165af424833fa67277"
+      },
+      "features": [
+        "features/eba13ee7-6c63-5618-b54f-bbb626379259-model-statistics"
+      ]
+    },
+    {
+      "plugin_id": "9592e6db-ce8a-49cc-ba3d-60eef87e7554",
+      "slug": "mep-set-system-type",
+      "name": "机电图元所属系统批量指定工具",
+      "version": "1.0.4",
+      "description": "批量将选中风管、管道、桥架/线管指定到 Revit 所属系统中，提供前置系统对比预览与冲突拦截。",
+      "author": "OmniBIM",
+      "discipline": "机电",
+      "category": "参数管理",
+      "tags": [
+        "本地",
+        "机电",
+        "参数管理"
+      ],
+      "dir_name": "9592e6db-ce8a-49cc-ba3d-60eef87e7554-mep-set-system-type",
+      "files": {
+        "README.md": "1605d960e1e4289a325b565a6092cfb75e138c1e51389539a2d07922de22f734",
+        "plugin.json": "928a11a2f0b60f5e7070f7977d32ed864384eb5b25f6bc28da5f54f624b58494",
+        "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/entrypoint.py": "738d4609b92da7515afdf6c4d0b43ad4d861375b5b7de9a4176aa26e877f6c89",
+        "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/feature.json": "7804f6a73f6a065300253f9eb39e4baaa494361c181478d894298013950e259d",
+        "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/payload/bundle.yaml": "b01343205c5629a8c63c5698de23a24f703c642924bca5bb99a31960a842d562",
+        "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/payload/icon.png": "c8aa3fbb3a22dc496a0e8e6c7a8f0d04afeb66bc1b6c14c6674f8f44d3fe93e4",
+        "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type/payload/script.py": "d6701a6e25f7e38f874e97e772571504d3c1f47a5b6408909ae7654413a4baa1"
+      },
+      "features": [
+        "features/f727ca63-51ec-497c-82b1-4fc4c95e72a1-mep-set-system-type"
+      ]
+    },
+    {
+      "plugin_id": "ab18371c-2a57-46bb-bdcd-a16b24ccdef8",
+      "slug": "project-param-batch-manager",
+      "name": "项目参数批量管理器",
+      "version": "1.0.0",
+      "description": "选择多个 Revit 文件，自动提取项目基点与全部项目参数（内置 + 项目/共享参数），支持新增项目参数并批量修改所有项目参数。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "协同",
+      "tags": [
+        "协同",
+        "项目参数",
+        "项目基点",
+        "批量",
+        "多文件",
+        "本地"
+      ],
+      "dir_name": "ab18371c-2a57-46bb-bdcd-a16b24ccdef8-project-param-batch-manager",
+      "files": {
+        "README.md": "808d327d87a82c8d7d4f5b849e5aa3c879777b33de3f2e89721ba0f2b33e4188",
+        "plugin.json": "c4a786f386c04c41b2453a4f1bf1b025764f696931ca968b91c763c17dce7b8f",
+        "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/entrypoint.py": "ccfed63812fa3fd5b381246fe67c2ee6adbffe116d42b1a5bf737068e88ea7e7",
+        "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/feature.json": "9b36ce5bb6716ff61d697d89a0a391736d57c5f4928dfe3991a9e2465d1d1ba0",
+        "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/bundle.yaml": "3cb491137c6eae8bd974344e730220aec4752f40846ded32202da95b44d2bc43",
+        "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/core_business.py": "93ae2a5c9553eec10b35a7f68109753f5478436b1cd8245d05ef085617457fc5",
+        "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/icon.png": "00eadd189fb9c75ec6c5b2fb19168bb23f1caee25b40c5312326be0262ee9524",
+        "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/revit_adapter.py": "e918feb184f8889e5177963b96727bb968680adf0a139d6299e655bb2ba3a93a",
+        "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/script.py": "b209bfd24700b548ae6ba3ec07555720814c5f7cd39169e13f7d4bceaeb6bd14",
+        "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch/payload/ui.xaml": "9700381f49c15e35f16240d79f989a4ace7c91347a68b96b3e1d47391bf63f70"
+      },
+      "features": [
+        "features/b8bde3b0-0509-4618-acd4-85b751111982-project-param-batch"
+      ]
+    },
+    {
+      "plugin_id": "ac747a87-5b55-4123-99e0-7ba27e89342b",
+      "slug": "plan-view-renamer",
+      "name": "平面视图名称批量编辑器",
+      "version": "1.0.5",
+      "description": "批量编辑平面视图名称，支持添加前后缀/查找替换，具备前置对比预览、冲突自动拦截与事务安全回滚。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "参数管理",
+      "tags": [
+        "本地",
+        "通用",
+        "参数管理"
+      ],
+      "dir_name": "ac747a87-5b55-4123-99e0-7ba27e89342b-plan-view-renamer",
+      "files": {
+        "README.md": "7941b9ac2c83f60fca05ab0c2278d9e41979c79fde9cdef0d0993efc748560a0",
+        "plugin.json": "cd4133621be404088992a32cfcbe93fe2c96bdb8c431d581191c6cb57db4e4b1",
+        "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/entrypoint.py": "738d4609b92da7515afdf6c4d0b43ad4d861375b5b7de9a4176aa26e877f6c89",
+        "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/feature.json": "dd8bfb0841558a0c1db2a4aae1b2f34068559a750245d686002e8919c70364ea",
+        "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/payload/bundle.yaml": "74187ed4bb37a4b590c8e67a14505b93adca0469149dacb1da47c647a04964c9",
+        "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/payload/icon.png": "c8aa3fbb3a22dc496a0e8e6c7a8f0d04afeb66bc1b6c14c6674f8f44d3fe93e4",
+        "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer/payload/script.py": "32ebf6fe8a2d5a640dc017a62b58f7a41af72a50f818cf25c9dd036208fac94f"
+      },
+      "features": [
+        "features/f471820f-7f1b-4e40-ac82-882ca27c6856-plan-view-renamer"
+      ]
+    },
+    {
+      "plugin_id": "b4e1e15a-77ab-5784-bd07-d3272fa66a3b",
+      "slug": "name-batch-replace",
+      "name": "名称批量替换",
+      "version": "1.0.0",
+      "description": "批量替换当前模型中的族名称和用户工作集名称。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "协同",
+      "tags": [
+        "本地",
+        "协同",
+        "族管理",
+        "工作集"
+      ],
+      "dir_name": "b4e1e15a-77ab-5784-bd07-d3272fa66a3b-name-batch-replace",
+      "files": {
+        "README.md": "75f03dbbc5feaaa577e8db1a6a4b54a94105a5425eb961202c5cec0815ae40e4",
+        "plugin.json": "cbe435c0f3e1330516dd2d1f58112db7522d7b7023394cce6cb66ffd143ccfed",
+        "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+        "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/feature.json": "183e7528239ed968bc56905f7081bdf3a4fb1cb6c9cd08fd0b625585181f44bf",
+        "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/payload/bundle.yaml": "61c84bb51b4fefdca9197ea6d245f20edea9f2dcf4ad2ea6931e1a9d51475977",
+        "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/payload/script.py": "0662469c3af894e89cd92119b24d95be1070875c6be43c62c5d741c10a9e9d97",
+        "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace/payload/ui.xaml": "b56ae73dc0bce5ef8e2aee9bea9c81f7bc41de5eb5aeae3225506b142dc5b806"
+      },
+      "features": [
+        "features/812df668-e7dd-573e-975b-916f81584ba4-name-batch-replace"
+      ]
+    },
+    {
+      "plugin_id": "c2eda096-4ce1-52f1-9a83-4b3cbd96c53b",
+      "slug": "bridge-contact-network",
+      "name": "桥梁接触网布置",
+      "version": "2.7.0",
+      "description": "框选拼接高架桥的桥面族，自动拟合中心线并生成轨道、桥边挡板；接触网支柱间距可输入，默认 40 米。",
+      "author": "OmniBIM",
+      "discipline": "电化",
+      "category": "建模",
+      "tags": [
+        "本地",
+        "电化",
+        "桥梁",
+        "接触网",
+        "轨道",
+        "挡板",
+        "自适应族"
+      ],
+      "dir_name": "c2eda096-4ce1-52f1-9a83-4b3cbd96c53b-bridge-contact-network",
+      "files": {
+        "README.md": "250bcb9db8365a555b34b4570697f975b1b4a0e0a0ab12e2f837926f5e2b27a4",
+        "plugin.json": "531a2332c883d18bd680003d505541dd7af3e8775ccdad04cc1226549a9bb7de",
+        "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+        "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/feature.json": "830498db7c818b3190af90befbd7d5c89ac6a0a38f01d5240b45023385e24838",
+        "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/payload/bundle.yaml": "7cbcf1cd2f4e0646c70ed597b1eec0b11407d290a0b98d284714fa9211caf414",
+        "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/payload/script.py": "5cc466aa9d4a159011bf460ae35f5e5bfe7cd69a8f6fc5b1940e417643cdade8",
+        "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network/payload/wizard.xaml": "c0f526cb1fad784a7c8acc80cdced8095b401aac88890f68f5850d31c8d6e6f1"
+      },
+      "features": [
+        "features/dad43bce-c07c-55ea-9cba-35febb2e3482-bridge-contact-network"
+      ]
+    },
+    {
+      "plugin_id": "e45e1a98-b8ab-5d99-8e84-11ee88037942",
+      "slug": "view-assistant",
+      "name": "视图助手",
+      "version": "1.0.0",
+      "description": "本地 pyRevit 视图工具。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "视图",
+      "tags": [
+        "出图",
+        "本地",
+        "管理",
+        "视图"
+      ],
+      "dir_name": "e45e1a98-b8ab-5d99-8e84-11ee88037942-view-assistant",
+      "files": {
+        "README.md": "399ff880a62fd9a4f9721e6abda9dd7e0832e4fb0def10c37e28f7b9641d6594",
+        "plugin.json": "217a30516d5903e3543a0e81599b51435e38a7bb3f259b6f83ff203f20cf42b9",
+        "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+        "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/feature.json": "169e406e45e91b5211b5e65d4ebf708b693f4f1a1560dd005afb5b30f164e3b6",
+        "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/payload/icon.png": "2fa8c56363332038e34a2d21290cf99fca5abc34e01c16391c977353cc6f4e99",
+        "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/payload/launcher.xaml": "78c1f7854567f8f082e5ab0d4a29709e4905849588f52a8da034cdc331f8a629",
+        "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/payload/script.py": "aff76611b4a21932a8b81c9a4b5776771e17b8a3e7db291f0345219818a480c9",
+        "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant/payload/ui.xaml": "7447338373b6383b62858beaa1e01c3374052640ea04efc649ff3674d5f48405"
+      },
+      "features": [
+        "features/22144572-8869-52d6-a7dd-6debb77c131c-view-assistant"
+      ]
+    },
+    {
+      "plugin_id": "f37a892b-8a21-4f12-8e12-32a106579ab1",
+      "slug": "project-param-to-shared",
+      "name": "项目参数转共享",
+      "version": "1.0.0",
+      "description": "提取当前打开项目的全部项目参数并列表，标注性质（普通/共享/内置），支持一键转为共享参数并保留原有图元数值，可在表中直接修改数值。",
+      "author": "OmniBIM",
+      "discipline": "通用",
+      "category": "协同",
+      "tags": [
+        "本地",
+        "协同",
+        "项目参数",
+        "共享参数",
+        "参数转换",
+        "数值修改"
+      ],
+      "dir_name": "f37a892b-8a21-4f12-8e12-32a106579ab1-project-param-to-shared",
+      "files": {
+        "README.md": "98726aae1c040e1f7d150f09f3e58cc0a77febb5683144fe412f04762182b0bd",
+        "plugin.json": "0949072a7e52da42b32261f6c0a8bfc1bd6022f510d5291b61c20f45141dbe38",
+        "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+        "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/feature.json": "a0d9b9eff20f8e1cb7d2e283cc68e009f6b844811c937dd0bb7f2f0548fee32d",
+        "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/bundle.yaml": "afd07823c8d8cab96e04420d7129270733f595d14f074ce777cae6b11a67fdfe",
+        "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/core_business.py": "f57a08b54361e742423a6de11b91ee4643f3654ccf5b29931da81b172ef91138",
+        "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/icon.png": "00eadd189fb9c75ec6c5b2fb19168bb23f1caee25b40c5312326be0262ee9524",
+        "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/revit_adapter.py": "2c2268241d7139783c04ddfcb6e4b24f08bb12bb07bc5e59b712423ef514fef9",
+        "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/script.py": "7198f8cb2894624ee5f0fc06a0c140f1d51e1af369c5bfc3644c55bde3366fc9",
+        "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/ui.xaml": "df06edf50c98d4f695dfac6d9bc152e793b2120333c9cb87b09c74fabd6eedbc"
+      },
+      "features": [
+        "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared"
+      ]
+    }
+  ]
+}

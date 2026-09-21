@@ -1,0 +1,23 @@
+{
+  "updated_at": "2026-09-04 02:29:36", 
+  "iterations": [
+    {
+      "ai_summary": "按 类别 → 族 → 族类型 三级层次详细分类统计族实例，并支持当前视图/当前选择/全模型范围过滤与实例明细浏览。", 
+      "notes": "AI 智能更新", 
+      "timestamp": "2026-09-04 02:24:13", 
+      "error_trace": null, 
+      "prompt": "让族类型分类更详细一些", 
+      "type": "improve", 
+      "version": "1.0.1"
+    }, 
+    {
+      "ai_summary": "统计当前 Revit 模型中族实例数量，并按 类别 -> 族 -> 族类型 分层浏览，支持筛选、搜索与 Revit 联动选择。", 
+      "notes": "AI 智能更新", 
+      "timestamp": "2026-09-04 02:29:36", 
+      "error_trace": null, 
+      "prompt": "族实例数量统计浏览器启动失败:Traceback (most recent call last):\r\nFile\r\nline 559, in <module>\r\n\"D:\\A/\\pyrevit_my\\OmniMetro.extension\\plugins\\6a4a3...\\script.py\",\r\nwindow = FamilylnstanceStatsWindowO\r\nFileline 417, in init\r\n\"D:\\A/pyrevit_ my\\OmniMetro.extension\\plugins\\6a4a3...\\script.py\",\r\nWPFWindow. init_ (self, XAML_LAYOUT, literal_ string=True)\r\nline 457, in initself.load xaml(line 489, in load_ xaml\r\nFile \"D:\\Software\\pyRevit-Master\\pyrevitlib\\pyrevit\\forms\\_ipy.py\",\r\nFile \"D:\\Software\\pyRevit-Master\\pyrevitlib\\pyrevit\\forms\\_ipy.py\",\r\nwpf.LoadComponent(self, framework.StringReader(xaml_source))\r\nException:无法设置未知成员”\r\nSystem.Windows.Controls.TreeView.VerticalScrollBarVisibility\".", 
+      "type": "improve", 
+      "version": "1.0.2"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+title: "机电图元所属系统批量指定工具"
+tooltip: "将选中的桥架、线管、管道、风管及管件/配件批量指定到目标所属系统类型，执行前自动扫描、预览、高亮冲突并防护只读图元。"
+author: "OmniBIM"
+version: "1.0.4"
+discipline: "机电"
+category: "参数管理"
+min_revit_version: 2018
+max_revit_version: 2030
+uuid: "f727ca63-51ec-497c-82b1-4fc4c95e72a1"

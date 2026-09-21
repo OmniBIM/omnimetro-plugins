@@ -1,0 +1,49 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TKbox 高级视图树管理器" Height="700" Width="500" WindowStartupLocation="CenterScreen" Background="#F0F0F0">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="0,0,0,10">
+            <TextBlock Text="视图组织架构预览" FontWeight="Bold" FontSize="16" Foreground="#333"/>
+            <TextBlock Text="操作：拖拽视图到文件夹以预览移动效果，完成后点击下方按钮应用。" FontSize="11" Foreground="#666" Margin="0,2,0,0"/>
+        </StackPanel>
+
+        <TreeView x:Name="view_tree" Grid.Row="1" Background="White" BorderBrush="#CCC" BorderThickness="1" 
+                  AllowDrop="True" Drop="tree_Drop" PreviewMouseLeftButtonDown="tree_PreviewMouseLeftButtonDown" MouseMove="tree_MouseMove">
+            <TreeView.Resources>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="True"/>
+                </Style>
+            </TreeView.Resources>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal" Margin="2">
+                        <!-- 只在视图节点显示 CheckBox -->
+                        <CheckBox IsChecked="{Binding IsChecked}" Margin="0,0,5,0" Visibility="{Binding BoxVis}"/>
+                        <TextBlock Text="{Binding Icon}" Margin="0,0,5,0"/>
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="13" Foreground="{Binding Color}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+
+        <Border Grid.Row="2" Background="#FFF9C4" CornerRadius="4" Margin="0,15,0,10" Padding="10">
+            <TextBlock x:Name="status_text" Text="就绪：拖拽视图开始调整" FontSize="12" Foreground="#795548" TextWrapping="Wrap"/>
+        </Border>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="还原预览" Margin="0,0,5,0" Height="40" Background="#9E9E9E" Foreground="White" Click="reset_tree"/>
+            <Button Grid.Column="1" Content="保存并应用所有修改" Margin="5,0,0,0" Height="40" Background="#4CAF50" Foreground="White" FontWeight="Bold" Click="apply_changes"/>
+        </Grid>
+    </Grid>
+</Window>

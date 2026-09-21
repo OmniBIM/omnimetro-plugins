@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "feature_id": "e819a512-33d1-5c82-990a-6612d4a1b021",
+  "plugin_id": "f37a892b-8a21-4f12-8e12-32a106579ab1",
+  "slug": "project-param-to-shared",
+  "name": "项目参数转共享",
+  "entrypoint": "entrypoint.py",
+  "ui": {
+    "type": "wpf",
+    "main_window": "payload/ui.xaml"
+  },
+  "runtime": {
+    "type": "ironpython",
+    "engine": "pyrevit"
+  },
+  "max_revit": 2030
+}

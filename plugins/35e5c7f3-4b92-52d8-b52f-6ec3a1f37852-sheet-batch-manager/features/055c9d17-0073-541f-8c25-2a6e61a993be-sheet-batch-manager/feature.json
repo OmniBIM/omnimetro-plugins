@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "feature_id": "055c9d17-0073-541f-8c25-2a6e61a993be",
+  "plugin_id": "35e5c7f3-4b92-52d8-b52f-6ec3a1f37852",
+  "slug": "sheet-batch-manager",
+  "name": "sheet-batch-manager",
+  "title": "批量图纸管理",
+  "description": "批量维护图纸名称、图纸编号及图纸实例参数；可从一张源图纸复制所选属性到多张图纸。",
+  "discipline": "通用",
+  "category": "协同",
+  "capability_id": "revit.sheet.batch-manager",
+  "entrypoint": "entrypoint.py",
+  "icon": "",
+  "min_revit": 2018,
+  "max_revit": 2030,
+  "tags": [
+    "本地",
+    "协同",
+    "图纸",
+    "出图",
+    "参数管理"
+  ],
+  "permissions": [
+    "revit_api"
+  ],
+  "evaluation": {
+    "benchmark_suite": "",
+    "benchmark_score": null
+  }
+}

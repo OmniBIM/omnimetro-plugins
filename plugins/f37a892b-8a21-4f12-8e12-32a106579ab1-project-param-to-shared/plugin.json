@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "plugin_id": "f37a892b-8a21-4f12-8e12-32a106579ab1",
+  "slug": "project-param-to-shared",
+  "name": "项目参数转共享",
+  "description": "提取当前打开项目的全部项目参数并列表，标注性质（普通/共享/内置），支持一键转为共享参数并保留原有图元数值，可在表中直接修改数值。",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "discipline": "通用",
+  "category": "协同",
+  "tags": [
+    "本地",
+    "协同",
+    "项目参数",
+    "共享参数",
+    "参数转换",
+    "数值修改"
+  ],
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "version": "1.0.0",
+  "license": "Proprietary",
+  "features": [
+    "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "revit_api"
+  ],
+  "created_at": "2026-08-26",
+  "updated_at": "2026-08-26",
+  "files": {
+    "README.md": "98726aae1c040e1f7d150f09f3e58cc0a77febb5683144fe412f04762182b0bd",
+    "plugin.json": "0949072a7e52da42b32261f6c0a8bfc1bd6022f510d5291b61c20f45141dbe38",
+    "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/entrypoint.py": "1e24cb6b81dddfa7748ad1ff4e152f0af4f0c0ffcb0458def9533072c2a3638c",
+    "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/feature.json": "a0d9b9eff20f8e1cb7d2e283cc68e009f6b844811c937dd0bb7f2f0548fee32d",
+    "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/bundle.yaml": "afd07823c8d8cab96e04420d7129270733f595d14f074ce777cae6b11a67fdfe",
+    "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/core_business.py": "f57a08b54361e742423a6de11b91ee4643f3654ccf5b29931da81b172ef91138",
+    "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/icon.png": "00eadd189fb9c75ec6c5b2fb19168bb23f1caee25b40c5312326be0262ee9524",
+    "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/revit_adapter.py": "2c2268241d7139783c04ddfcb6e4b24f08bb12bb07bc5e59b712423ef514fef9",
+    "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/script.py": "7198f8cb2894624ee5f0fc06a0c140f1d51e1af369c5bfc3644c55bde3366fc9",
+    "features/e819a512-33d1-5c82-990a-6612d4a1b021-project-param-to-shared/payload/ui.xaml": "df06edf50c98d4f695dfac6d9bc152e793b2120333c9cb87b09c74fabd6eedbc"
+  },
+  "iteration_count": 0
+}

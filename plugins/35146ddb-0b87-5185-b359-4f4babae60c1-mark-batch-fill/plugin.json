@@ -1,0 +1,54 @@
+{
+  "author": {
+    "name": "OmniBIM",
+    "organization": "",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "schema_version": 1,
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "category": "协同",
+  "description": "按房间、类型和流水号规则批量填写族实例参数编码。",
+  "discipline": "通用",
+  "tags": [
+    "本地",
+    "协同",
+    "参数",
+    "编码",
+    "房间"
+  ],
+  "name": "Mark编码批量填写",
+  "slug": "mark-batch-fill",
+  "license": "Proprietary",
+  "features": [
+    "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill"
+  ],
+  "dependencies": [],
+  "files": {
+    "README.md": "eb84688cb00763a7641f9b0463f550c7ab1a9d36a31b4f9275f9f1272819fe97",
+    "plugin.json": "adc099f472809f0e094aad56b3a4ceef0fefdab1265c5bfd531ec6f4c5902f01",
+    "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/entrypoint.py": "738d4609b92da7515afdf6c4d0b43ad4d861375b5b7de9a4176aa26e877f6c89",
+    "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/feature.json": "67b7bad9e3ce190d8cd5b59bf0f40d556a7063879391e9339a06de20a01383f7",
+    "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/payload/bundle.yaml": "774754ae34cf2d0ae5cbf594ccc002109e4ee0d5cc40484028237a7caa126db7",
+    "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/payload/script.py": "9494714407ede26a97efb459393ab9a4517637d69de95acffd1650d915287836",
+    "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/payload/selection_options.xaml": "4054cfd4498e93ac2c10dd03cb19e010cdc9e68aaf7f2eb190defb2f702fd57e",
+    "features/a241fd9e-c333-5bab-9516-088024fe3abc-mark-batch-fill/payload/ui.xaml": "f9f7e0473b94772f2a873e9a90631c364bd4bed90fe8ada744b2d43bfa2f5e22"
+  },
+  "created_at": "2026-08-21",
+  "version": "1.0.0",
+  "updated_at": "2026-09-03",
+  "migration": {
+    "source": "TKbox/TKbox.extension/TKbox.tab/协同工具.panel/Mark编码批量填写.pushbutton",
+    "strategy": "embedded-payload"
+  },
+  "iteration_count": 3,
+  "plugin_id": "35146ddb-0b87-5185-b359-4f4babae60c1",
+  "permissions": [
+    "revit_api"
+  ]
+}

@@ -1,0 +1,8 @@
+title: 名称批量替换
+tooltip: 批量替换当前模型中的族名称和用户工作集名称。
+author: "OmniBIM"
+discipline: 通用
+category: 协同
+tags: 本地,协同,族管理,工作集
+load_group: 核心工具
+version: 1.0.0

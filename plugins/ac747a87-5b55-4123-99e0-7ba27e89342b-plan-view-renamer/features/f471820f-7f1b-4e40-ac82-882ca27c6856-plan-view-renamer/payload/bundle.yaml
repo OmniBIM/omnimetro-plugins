@@ -1,0 +1,9 @@
+title: "平面视图名称批量编辑器"
+tooltip: "列表显示所有平面视图，支持在表格中直接编辑新名称并批量改名，带冲突预检与事务回滚。"
+author: "OmniBIM"
+version: "1.0.5"
+discipline: "通用"
+category: "参数管理"
+min_revit_version: 2018
+max_revit_version: 2030
+uuid: "f471820f-7f1b-4e40-ac82-882ca27c6856"

@@ -1,0 +1,48 @@
+{
+  "author": {
+    "organization": "",
+    "name": "OmniBIM",
+    "contact": "",
+    "url": "https://github.com/OmniBIM",
+    "email": "dev@omnibim.org"
+  },
+  "category": "建模",
+  "software": {
+    "name": "Revit",
+    "min_version": "2018",
+    "max_version": "2030"
+  },
+  "schema_version": 1,
+  "description": "统计当前 Revit 模型中族实例数量，并按 类别 -> 族 -> 族类型 分层浏览，支持筛选、搜索与 Revit 联动选择。",
+  "license": "Proprietary",
+  "discipline": "通用",
+  "name": "族实例数量统计浏览器",
+  "slug": "family-instance-type-count-dashboard",
+  "files": {
+    ".omni_history.json": "c8206cc5cd6293410f2cb60af0f8c4a2bea6ba2870c64d6cfce42ab8d57f22b7",
+    "README.md": "65fd93601f2ebdbad5ae23513a47ad483226cd205f3ab94548d92fecfa2d648a",
+    "plugin.json": "74613e4e9b9daff5fa8a5d1414ab016f1657a0a7ee1b61e2bf5af9ee24f7b90b",
+    "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/entrypoint.py": "738d4609b92da7515afdf6c4d0b43ad4d861375b5b7de9a4176aa26e877f6c89",
+    "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/feature.json": "dbf9b57eaf7ba819abc0917441de7b9dec177ec269485508cf3bcd072e6945a3",
+    "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/payload/bundle.yaml": "728536c280b91457ffdd062af69cabf15ceb4d1295dbaa7910e6f17d00942dd9",
+    "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/payload/icon.png": "c8aa3fbb3a22dc496a0e8e6c7a8f0d04afeb66bc1b6c14c6674f8f44d3fe93e4",
+    "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard/payload/script.py": "5d49bf17b7e58fae5faa3a961e44644f1084172ac2a38baa9e0e94209eb9d70d"
+  },
+  "features": [
+    "features/3c3153eb-294f-449b-8d35-42208394dfc5-family-instance-type-count-dashboard"
+  ],
+  "dependencies": [],
+  "tags": [
+    "本地",
+    "通用",
+    "建模"
+  ],
+  "created_at": "2026-09-03",
+  "version": "1.0.2",
+  "updated_at": "2026-09-04",
+  "iteration_count": 2,
+  "plugin_id": "6a4a3d85-3c8e-452f-897e-0d1a015dba71",
+  "permissions": [
+    "revit_api"
+  ]
+}

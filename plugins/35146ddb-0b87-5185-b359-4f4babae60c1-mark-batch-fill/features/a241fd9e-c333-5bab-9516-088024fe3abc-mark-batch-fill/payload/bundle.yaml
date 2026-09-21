@@ -1,0 +1,8 @@
+title: Mark编码批量填写
+tooltip: 按房间、类型和流水号规则批量填写族实例参数编码。
+author: "OmniBIM"
+discipline: 通用
+category: 协同
+tags: 本地,协同,参数,编码,房间
+load_group: 核心工具
+version: 1.0.0

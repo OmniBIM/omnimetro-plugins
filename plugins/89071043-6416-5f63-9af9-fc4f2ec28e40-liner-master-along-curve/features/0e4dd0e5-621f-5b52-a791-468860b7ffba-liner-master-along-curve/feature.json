@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "feature_id": "0e4dd0e5-621f-5b52-a791-468860b7ffba",
+  "plugin_id": "89071043-6416-5f63-9af9-fc4f2ec28e40",
+  "slug": "liner-master-along-curve",
+  "name": "liner-master-along-curve",
+  "title": "区间自动建模",
+  "description": "LinerMaster - 地铁区间全专业自动化建模平台。支持族沿线阵列布置与轮廓沿线放样。",
+  "discipline": "线规",
+  "category": "建模",
+  "capability_id": "revit.liner-master.along-curve",
+  "entrypoint": "entrypoint.py",
+  "icon": "payload/icon.png",
+  "min_revit": 2018,
+  "max_revit": 2030,
+  "tags": [
+    "地铁",
+    "建模",
+    "本地",
+    "线路"
+  ],
+  "permissions": [
+    "revit_api"
+  ],
+  "evaluation": {
+    "benchmark_suite": "",
+    "benchmark_score": null
+  }
+}
